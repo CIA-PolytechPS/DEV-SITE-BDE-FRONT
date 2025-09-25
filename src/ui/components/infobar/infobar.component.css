@@ -1,0 +1,53 @@
+#infobar {
+	background: #3f3d3d;
+	color: #fffed2;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+	border-top: 4px solid #ffd600;
+	letter-spacing: 0.02em;
+}
+
+.infobar-info {
+	text-align: center;
+
+	& > * {
+		margin: 0.4rem 0;
+	}
+}
+
+.infobar-links {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+
+	@media (max-width: 382px) {
+		flex-direction: column;
+		
+	}
+}
+
+.infobar-legal {
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	& > ul {
+		display: flex;
+		list-style: none;
+		margin: 0 10px 20px 0;
+		padding: 0;
+        gap: 2rem;
+	}
+
+	& > p {
+		margin: 0 0 20px 0;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 525px) {
+		flex-direction: column;
+		& > ul {
+			margin: 0 0 10px 0;
+			justify-content: space-around;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+*
+!.gitignore
+!LICENSE
+!README.md
+!package.json
+!package-lock.json
+!tsconfig.json
+!eslint.config.mjs
+!webpack.config.js
+!.env.template
+!public/
+!public/**
+!src/
+!src/**
