@@ -2,6 +2,8 @@
 
 Front-end repository of BDE website.
 
+Don't forget to run `. ./setup.sh` after cloning the repository.
+
 ---
 
 ## Structure
@@ -23,6 +25,13 @@ To edit outisde of src for customization:
 
 ## Commands
 - `npm run lint` : lint the code with ESLint (automatically run before `dev` and `build`)
-- `npm run nibble`: lint the code with ESLint and format output to more readable format
+  - options:
+    - "--lint-skip": skip linting
+    - "--lint-fix": automatically fix problems
+    - "--lint-nibble": format output to more readable format
 - `npm run dev` : run the application in development mode (with hot-reloading)
+  - options:
+    - every those of `lint` command
 - `npm run build` : build the application for production
+  - options:
+    - every those of `lint` command
