@@ -4,11 +4,11 @@ GITHUB_SETUP_SSH_KEY='id_ed25519'
 read -p "Your GitHub email: " GITHUB_SETUP_EMAIL > /dev/tty
 read -p "Your GitHub pseudo: " GITHUB_SETUP_USER > /dev/tty
 
-rm -rf "${GITHUB_SETUP_SSH_FOLDER}"
-mkdir -p "${GITHUB_SETUP_SSH_FOLDER}"
-ssh-keygen -t ed25519 -a 100 -C "${GITHUB_SETUP_EMAIL}" -f "${GITHUB_SETUP_SSH_FOLDER}/${GITHUB_SETUP_SSH_KEY}_auth" -N ""
-ssh-keygen -t ed25519 -a 100 -C "${GITHUB_SETUP_EMAIL}" -f "${GITHUB_SETUP_SSH_FOLDER}/${GITHUB_SETUP_SSH_KEY}_sign" -N ""
-chmod -R 0600 "${GITHUB_SETUP_SSH_FOLDER}"
+rm -rf "${GITHUB_SETUP_SSH_FOLDER}" > /dev/null
+mkdir -p "${GITHUB_SETUP_SSH_FOLDER}" > /dev/null
+ssh-keygen -t ed25519 -a 100 -C "${GITHUB_SETUP_EMAIL}" -f "${GITHUB_SETUP_SSH_FOLDER}/${GITHUB_SETUP_SSH_KEY}_auth" -N "" > /dev/null
+ssh-keygen -t ed25519 -a 100 -C "${GITHUB_SETUP_EMAIL}" -f "${GITHUB_SETUP_SSH_FOLDER}/${GITHUB_SETUP_SSH_KEY}_sign" -N "" > /dev/null
+chmod -R 0600 "${GITHUB_SETUP_SSH_FOLDER}" > /dev/null
 
 git config user.name "${GITHUB_SETUP_USER}"
 git config user.email "${GITHUB_SETUP_EMAIL}"
@@ -21,7 +21,6 @@ git config merge.tool vimdiff
 git config mergetool.prompt false
 git config core.autocrlf input
 git config core.safecrlf true
-git config eol lf
 git config color.ui auto
 git config color.branch auto
 git config color.diff auto

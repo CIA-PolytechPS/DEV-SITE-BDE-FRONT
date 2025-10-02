@@ -25,9 +25,7 @@ jobs:
           cache: "npm"
 
       - name: Install packages
-        run: |
-          npm ci
-          npm i @microsoft/eslint-formatter-sarif
+        run: npm ci
 
       - name: Run ESLint
         env:
