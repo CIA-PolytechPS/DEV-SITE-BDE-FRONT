@@ -11,7 +11,7 @@ const HomePage: FC = (): ReactNode => {
     });
 
     return (
-        <h1>In development</h1>
+        <h1>In development UwU</h1>
     );
 };
 
