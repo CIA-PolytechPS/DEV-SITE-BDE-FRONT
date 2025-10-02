@@ -30,7 +30,7 @@ jobs:
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-        run: eslint 'src/**/*.[jt]s?(x)' --max-warnings=0 --output-file eslint-results.sarif
+        run: npx eslint 'src/**/*.[jt]s?(x)' --max-warnings=0 --output-file eslint-results.sarif
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
