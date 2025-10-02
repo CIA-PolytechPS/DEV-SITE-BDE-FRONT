@@ -863,7 +863,7 @@ const STYLISTIC_RULES = {
     "@stylistic/no-trailing-spaces"              : ["error", { skipBlankLines: true, ignoreComments: false }],
     "@stylistic/no-whitespace-before-property"   : "error",
     "@stylistic/nonblock-statement-body-position": ["error", "beside", { overrides: {} }],
-    "@stylistic/object-curly-newline"            : ["error", { multiline: true, minProperties: 6, consistent: true }],
+    "@stylistic/object-curly-newline"            : ["error", { multiline: true, minProperties: 11, consistent: true }],
     "@stylistic/object-curly-spacing"            : ["error", "always", { arraysInObjects: true, objectsInObjects: true }],
     "@stylistic/object-property-newline"         : ["error", { allowAllPropertiesOnSameLine: true }],
     "@stylistic/one-var-declaration-per-line"    : ["error", "initializations"],

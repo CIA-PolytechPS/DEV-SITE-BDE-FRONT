@@ -7,5 +7,7 @@ const USERS: User[] = [
 ];
 
 export async function getSelf(_token: string): Promise<User> {
+    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+
     return mapUser(USERS[0]);
 }

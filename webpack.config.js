@@ -13,7 +13,7 @@ module.exports = {
     entry: path.resolve(__dirname, "src", "index.tsx"),
     output: {
         filename: "bundle.[contenthash].js",
-        path: process.env.BUILD_PATH ?? path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "build"),
         clean: true,
         publicPath: "/"
     },
@@ -50,9 +50,6 @@ module.exports = {
             inject: "body",
             scriptLoading: "defer"
         }),
-        new webpack.DefinePlugin({
-            "process.env": JSON.stringify(process.env)
-        }),
         ...(
             isProd
             ? [
@@ -74,8 +71,8 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         host: "127.0.0.1",
-        port: process.env.PORT_DEV ?? 3200,
-        allowedHosts: [`dev.${process.env.DOMAIN}`],
+        port: process.env.PORT ?? 3000,
+        allowedHosts: [`dev.${process.env.HOST}`],
         compress: true,
         headers: {
             "X-Frame-Options": "DENY",
@@ -86,7 +83,7 @@ module.exports = {
         client: {
             overlay: true,
             webSocketURL: {
-                hostname: `dev.${process.env.DOMAIN}`,
+                hostname: `dev.${process.env.HOST}`,
                 port: 443,
                 protocol: "wss",
                 pathname: "/ws"

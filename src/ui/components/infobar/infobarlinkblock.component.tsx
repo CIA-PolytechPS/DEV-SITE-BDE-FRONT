@@ -1,8 +1,8 @@
-import { FC, Children, useEffect, ReactNode } from 'react';
-import { ComponentProps } from '@/shared/models/common/props.model';
-import '@/ui/components/infobar/infobarlinkblock.component.css';
+import { FC, Children, useEffect, ReactNode } from "react";
+import { ComponentProps } from "@/shared/models/common/props.model";
+import "@/ui/components/infobar/infobarlinkblock.component.css";
 
-interface InfobarLinkBlockCompProps extends ComponentProps{
+interface InfobarLinkBlockCompProps extends ComponentProps {
     title   : string;
     children: ReactNode[];
 }
@@ -16,14 +16,12 @@ const InfobarLinkBlockComp: FC<InfobarLinkBlockCompProps> = (props) => {
         console.log("Rendered: InfobarLinkBlockComp");
     });
 
-    const items = Children.map(props.children, (child) => (
-        <li className='infobar-link-block-item'>{child}</li>
-    ));
+    const items = Children.map(props.children, (child) => { return <li className="infobar-link-block-item">{child}</li>; });
 
     return (
-        <div className={`infobar-link-block`}>
+        <div className="infobar-link-block">
             <h3>{props.title}</h3>
-            <ul className='infobar-link-block-content'>{items}</ul>
+            <ul className="infobar-link-block-content">{items}</ul>
         </div>
     );
 };

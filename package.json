@@ -6,10 +6,13 @@
     "main": "webpack.config.js",
     "type": "commonjs",
     "scripts": {
-        "lint": "eslint 'src/**/*.[jt]s?(x)' --max-warnings=0 --cache",
-        "nibble": "eslint-nibble 'src/**/*.[jt]s?(x)' --cache",
-        "dev": "NODE_ENV='development' webpack serve",
-        "build": "NODE_ENV='production' webpack build"
+        "lint": "node scripts/lint.mjs",
+        "dev": "node scripts/dev.mjs",
+        "build": "node scripts/build.mjs",
+        "lint:run": "eslint 'src/**/*.[jt]s?(x)' --max-warnings=0 --cache",
+        "nibble:run": "eslint-nibble 'src/**/*.[jt]s?(x)' --cache",
+        "dev:run": "NODE_ENV='development' webpack serve",
+        "build:run": "NODE_ENV='production' webpack build"
     },
     "keywords": [
         "react",
@@ -32,7 +35,6 @@
         "@eslint/js": "9.34.0",
         "@pmmmwh/react-refresh-webpack-plugin": "0.6.1",
         "@stylistic/eslint-plugin": "5.4.0",
-        "@types/node": "24.5.2",
         "@types/react": "19.1.12",
         "@types/react-dom": "19.1.9",
         "@typescript-eslint/eslint-plugin": "8.44.0",
@@ -44,7 +46,6 @@
         "eslint-plugin-react": "7.37.5",
         "html-webpack-plugin": "5.6.4",
         "mini-css-extract-plugin": "2.9.4",
-        "node": "24.8.0",
         "react-refresh": "0.17.0",
         "style-loader": "4.0.0",
         "ts-loader": "9.5.4",

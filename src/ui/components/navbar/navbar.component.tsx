@@ -1,10 +1,10 @@
-import { FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComments } from '@fortawesome/free-solid-svg-icons';
-import { useGeneralVars } from '@/shared/contexts/common/general.context';
-import { useReRender } from '@/shared/utils/common/hook.util';
-import '@/ui/components/navbar/navbar.component.css';
+import { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { useGeneralVars } from "@/shared/contexts/common/general.context";
+import { useReRender } from "@/shared/utils/common/hook.util";
+import "@/ui/components/navbar/navbar.component.css";
 
 const NavbarComp: FC = () => {
     const navigate = useNavigate();
@@ -26,13 +26,14 @@ const NavbarComp: FC = () => {
     });
 
     return (
-        <header id='navbar'>
+        <header id="navbar">
             <p>Menu</p>
-            <h1 className='navbar-title'>{navbar_title.current}</h1>
+            <h1 className="navbar-title">{navbar_title.current}</h1>
+
             <FontAwesomeIcon
                 icon={faComments}
-                onClick={() => { return navigate('/contact'); }}
-                className='navbar-icon'
+                onClick={() => { void navigate("/contact"); }}
+                className="navbar-icon"
             />
         </header>
     );
