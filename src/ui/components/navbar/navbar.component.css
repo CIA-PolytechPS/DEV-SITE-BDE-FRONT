@@ -1,0 +1,30 @@
+#navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7.16vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    padding: 1.19vh 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    & > .navbar-title {
+        margin: 0;
+        line-height: 1;
+        font-size: 4.78vh;
+        font-weight: bold;
+        color: black;
+    }
+
+    & > .navbar-icon {
+        color: black;
+        height: 100%;
+        max-height: 100%;
+        aspect-ratio: 1;
+        cursor: pointer;
+    }
+}

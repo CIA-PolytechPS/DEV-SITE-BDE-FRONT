@@ -1,0 +1,6 @@
+{
+    \"dev\": ${DEV},
+    \"host\": \"${HOST}\",
+    \"api_url\": \"${API_URL}\",
+    \"data_url\": \"${DATA_URL}\"
+}

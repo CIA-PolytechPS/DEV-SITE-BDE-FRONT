@@ -1,0 +1,168 @@
+name: Tag & Release on main PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [ "main" ]
+
+jobs:
+  tag_and_release:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'r/')
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Check required vars
+        run: |
+          if [ -z "${{ secrets.ADMIN_TOKEN }}" ]; then
+            echo "❌ ADMIN_TOKEN is not defined in repo/environment secrets."
+            exit 1
+          fi
+          echo "✅ Required vars/secrets are set."
+
+      - name: Extract version & title from PR title
+        id: extractmeta
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_TITLE="${PR_TITLE#"${PR_TITLE%%[![:space:]]*}"}"
+          PR_TITLE="${PR_TITLE%"${PR_TITLE##*[![:space:]]}"}"
+
+          if [[ "${PR_TITLE}" =~ ^r/([0-9]+\.[0-9]+\.[0-9]+)[[:space:]]-[[:space:]](.+)$ ]]; then
+            VERSION="${BASH_REMATCH[1]}"
+            RELEASE_TITLE="${RELEASE_TITLE#"${RELEASE_TITLE%%[![:space:]]*}"}"
+            RELEASE_TITLE="${RELEASE_TITLE%"${RELEASE_TITLE##*[![:space:]]}"}"
+          else
+            echo "PR title does not match expected pattern: r/X.Y.Z - Title"
+            exit 1
+          fi
+
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "release_title=${RELEASE_TITLE}" >> "${GITHUB_OUTPUT}"
+
+      - name: Extract description & changelog from PR body
+        id: extractcontent
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_BODY="${PR_BODY#"${PR_BODY%%[![:space:]]*}"}"
+          PR_BODY="${PR_BODY%"${PR_BODY##*[![:space:]]}"}"
+
+          MATCH=$(
+            echo "${PR_BODY}" | awk '
+              /## Description/ {description_flag=1; next}
+              /## Changelog/ {description_flag=0; changelog_flag=1; next}
+              /^---/ {description_flag=0; changelog_flag=0}
+              description_flag {description = description $0 ORS}
+              changelog_flag {changelog = changelog $0 ORS}
+              END {
+                gsub(/~~~~~/, "_____", description);
+                gsub(/~~~~~/, "_____", changelog);
+                gsub(/\r/, "", description);
+                gsub(/\r/, "", changelog);
+                gsub(/^[[:space:]]+|[[:space:]]+$/, "", description);
+                gsub(/^[[:space:]]+|[[:space:]]+$/, "", changelog);
+                printf "%s~~~~~%s", description, changelog;
+              }'
+          )
+
+          DESCRIPTION="${MATCH%%~~~~~*}"
+          CHANGELOG="${MATCH#*~~~~~}"
+
+          [ -z "${DESCRIPTION}" -a -z "${CHANGELOG}" ] && DESCRIPTION="${PR_BODY}"
+          [ -z "${DESCRIPTION}" ] && DESCRIPTION="No release notes provided."
+          [ -z "${CHANGELOG}" ] && CHANGELOG="See full changelog link below."
+
+          echo "description<<EOF" >> "${GITHUB_OUTPUT}"
+          echo "${DESCRIPTION}" >> "${GITHUB_OUTPUT}"
+          echo "EOF" >> "${GITHUB_OUTPUT}"
+
+          echo "changelog<<EOF" >> "${GITHUB_OUTPUT}"
+          echo "${CHANGELOG}" >> "${GITHUB_OUTPUT}"
+          echo "EOF" >> "${GITHUB_OUTPUT}"
+
+      - name: Get previous version and check new version validity
+        id: previousversion
+        run: |
+          CURRENT="${{ steps.extractmeta.outputs.version }}"
+
+          git tag -l "v${CURRENT}" 2>/dev/null | grep -Eq "v${CURRENT}" && echo "Error: version ${CURRENT} already exists as a tag" && exit 1
+
+          version_to_array() {
+            IFS='.'
+            read -r MAJOR MINOR PATCH <<< "${1#v}"
+            echo "$MAJOR" "$MINOR" "$PATCH"
+          }
+
+          version_le() {
+            read -r M1 m1 p1 <<< "$(version_to_array "$1")"
+            read -r M2 m2 p2 <<< "$(version_to_array "$2")"
+
+            [[ M1 -lt M2 ]] && return 0
+            [[ M1 -eq M2 && m1 -lt m2 ]] && return 0
+            [[ M1 -eq M2 && m1 -eq m2 && p1 -le p2 ]] && return 0
+
+            return 1
+          }
+
+          TAGS=$(git tag -l "v*.*.*")
+          for TAG in ${TAGS}; do
+            TAG="$(echo "${TAG}" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$')" || continue
+            TAG="$(echo "${TAG}" | tr -d 'v')"
+
+            if version_le "${CURRENT}" "${TAG}"; then
+              [[ -z "${SUPERIOR}" ]] || version_le "${TAG}" "${SUPERIOR}" && SUPERIOR="${TAG}"
+            fi
+
+            if version_le "${TAG}" "${CURRENT}"; then
+              [[ -z "${INFERIOR}" ]] || version_le "${INFERIOR}" "${TAG}" && INFERIOR="${TAG}"
+            fi
+          done
+
+          echo "previous_version=${INFERIOR}"
+
+          if [[ -n "${INFERIOR}" && -n "${SUPERIOR}" ]]; then
+            read -r Mi mi pi <<< "$(version_to_array "${INFERIOR}")"
+            read -r Mc mc pc <<< "$(version_to_array "${CURRENT}")"
+            read -r Ms ms ps <<< "$(version_to_array "${SUPERIOR}")"
+
+            [[ $Mc -lt $Ms || $mc -lt $ms ]] && exit 0
+
+            echo "Error: invalid version ${CURRENT}, version ${SUPPERIOR} blocks it"
+            exit 1
+          fi
+
+      - name: Create tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git tag "v${{ steps.extractmeta.outputs.version }}"
+          git push origin "v${{ steps.extractmeta.outputs.version }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+        with:
+          tag_name: v${{ steps.extractmeta.outputs.version }}
+          name: ${{ steps.extractmeta.outputs.release_title }}
+          body: |
+            ## 🚀 Release Notes
+
+            ${{ steps.extractcontent.outputs.description }}
+
+            ---
+
+            ## 🔥 Changes Since Last Release
+
+            ${{ steps.extractcontent.outputs.changelog }}
+
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.previousversion.outputs.previous_version }}...v${{ steps.extractmeta.outputs.version }}
+
+            ---
+
+            _This release was generated by GitHub Actions._

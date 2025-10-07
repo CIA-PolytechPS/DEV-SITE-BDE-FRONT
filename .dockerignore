@@ -1,0 +1,16 @@
+*
+
+!.dockerignore
+!docker/
+!docker/**
+
+!package.json
+!package-lock.json
+!tsconfig.json
+
+!webpack.config.mjs
+!postcss.config.mjs
+!public/
+!public/**
+!src/
+!src/**

@@ -1,0 +1,13 @@
+services:
+  front:
+    image: ${DOCKER_IMAGE}
+    container_name: ${DOCKER_CONTAINER}
+    restart: unless-stopped
+    environment:
+      HOST: "${DOCKER_ENV_HOST}"
+      API_URL: "${DOCKER_ENV_API_URL}"
+      DATA_URL: "${DOCKER_ENV_DATA_URL}"
+    ports:
+      - "127.0.0.1:${DOCKER_PORT}:80"
+    volumes:
+      - ${DOCKER_MOUNTED}:/mounted

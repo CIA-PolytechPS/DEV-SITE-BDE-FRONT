@@ -1,0 +1,132 @@
+name: CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  setup:
+    name: Setup Node.js environment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+        with:
+          install: true
+
+  lint:
+    name: Run lint scanning
+    runs-on: ubuntu-latest
+    needs: setup
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Use ESlint cache
+        uses: actions/cache@v4
+        with:
+          path: .eslintcache
+          key: cache-eslint-${{ hashFiles('src/**/*', 'eslint.config.mjs', 'tsconfig.json', 'package.json') }}-${{ github.run_attempt }}-${{ github.run_id }}
+          restore-keys: |
+            cache-eslint-${{ hashFiles('src/**/*', 'eslint.config.mjs', 'tsconfig.json', 'package.json') }}-${{ github.run_attempt }}-
+            cache-eslint-${{ hashFiles('src/**/*', 'eslint.config.mjs', 'tsconfig.json', 'package.json') }}-
+            cache-eslint-
+
+      - name: Run ESLint
+        run: npm run lint:run
+
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    needs: setup
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Testing
+        run: echo "TODO unit testing"
+
+  build:
+    name: Run build for testing
+    runs-on: ubuntu-latest
+    needs: setup
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Use webpack cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .webpackcache
+            build
+          key: cache-webpack-${{ hashFiles('src/**/*', 'public/**/*', 'postcss.config.mjs', 'webpack.config.mjs', 'package.json') }}-${{ github.run_attempt }}-${{ github.run_id }}
+          restore-keys: |
+            cache-webpack-${{ hashFiles('src/**/*', 'public/**/*', 'postcss.config.mjs', 'webpack.config.mjs', 'package.json') }}-${{ github.run_attempt }}-
+            cache-webpack-${{ hashFiles('src/**/*', 'public/**/*', 'postcss.config.mjs', 'webpack.config.mjs', 'package.json') }}-
+            cache-webpack-
+
+      - name: Build Testing
+        run: npm run build:run -- --output-path=build
+
+  analysis:
+    name: Run CodeQL analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      packages: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - language: actions
+          build-mode: none
+        - language: javascript-typescript
+          build-mode: none
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Use CodeQL cache
+        uses: actions/cache@v4
+        with:
+          path: codeql-db
+          key: cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-${{ github.run_id }}
+          restore-keys: |
+            cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-
+            cache-codeql-${{ matrix.language }}-
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+          db-location: codeql-db

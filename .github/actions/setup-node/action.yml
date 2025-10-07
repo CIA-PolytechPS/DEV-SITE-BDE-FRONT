@@ -1,0 +1,45 @@
+name: Setup Node + npm cache
+description: Checkout repo, setup Node.js, and cache npm dependencies
+inputs:
+  install:
+    description: 'If true, skip the install part of this action'
+    required: false
+    default: false
+runs:
+  using: "composite"
+  steps:
+    - name: Use Node.js 22
+      uses: actions/setup-node@v5
+      with:
+        node-version: 22
+
+    - name: Restore node cache
+      uses: actions/cache/restore@v4
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: cache-node-${{ hashFiles('package-lock.json') }}-${{ github.run_attempt }}-${{ github.run_id }}
+        restore-keys: |
+          cache-node-${{ hashFiles('package-lock.json') }}-${{ github.run_attempt }}-
+          cache-node-${{ hashFiles('package-lock.json') }}-
+          cache-node-
+
+    - name: Update npm
+      if: ${{ inputs.install == 'true' }}
+      run: npm install -g npm@latest
+      shell: bash
+
+    - name: Install packages
+      if: ${{ inputs.install == 'true' }}
+      run: npm ci
+      shell: bash
+
+    - name: Save node cache
+      if: ${{ inputs.install == 'true' }}
+      uses: actions/cache/save@v4
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: cache-node-${{ hashFiles('package-lock.json') }}-${{ github.run_attempt }}-${{ github.run_id }}

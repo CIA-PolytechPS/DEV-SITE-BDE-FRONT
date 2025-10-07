@@ -1,0 +1,74 @@
+name: CD
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+    name: Deploy docker image
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Check tag's commit is in main
+        run: |
+          TAG_REF=${GITHUB_REF#refs/tags/}
+          COMMIT_SHA=$(git rev-list -n 1 ${TAG_REF})
+          git merge-base --is-ancestor ${COMMIT_SHA} origin/main || exit 1
+
+      - name: Check required vars
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
+            echo "❌ DOCKERHUB_TOKEN is not defined in repo/environment secrets."
+            exit 1
+          fi
+          if [ -z "${{ vars.DOCKERHUB_USERNAME }}" ]; then
+            echo "❌ DOCKERHUB_USERNAME is not defined in repo/environment variables."
+            exit 1
+          fi
+          if [ -z "${{ vars.DOCKERHUB_IMAGE }}" ]; then
+            echo "❌ DOCKERHUB_IMAGE is not defined in repo/environment variables."
+            exit 1
+          fi
+          echo "✅ Required vars/secrets are set."
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_IMAGE }}
+          tags: |
+            type=semver,pattern={{version}},match=v(\d+.\d+.\d+)$
+            type=semver,pattern={{major}}.{{minor}},match=v(\d+.\d+.\d+)$
+            type=semver,pattern={{major}},match=v(\d+.\d+.\d+)$
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ vars.DOCKER_BUILD_CONTEXT || '.' }}
+          file: ${{ vars.DOCKER_CONFIG_FOLDER || './.docker' }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-contexts: |
+            docker_config_folder=${{ vars.DOCKER_CONFIG_FOLDER || './.docker' }}

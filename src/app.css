@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+head {
+    display: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    background-image: repeating-linear-gradient(
+        140deg,
+        #c99828 0%,
+        #ca9a29 10%,
+        #cb9b2b 15%,
+        #ce9f30 20%,
+        #d8b647 24%,
+        #d8b647 26%,
+        #ce9f30 30%,
+        #cb9b2b 35%,
+        #ca9a29 40%,
+        #c99828 50%
+    );
+    background-size: 200% 200%;
+    background-repeat: repeat;
+    animation: animation-gold-shimmer 10s linear infinite;
+}
+
+@keyframes animation-gold-shimmer {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+}
+
+#main {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
