@@ -1,6 +1,0 @@
-{
-    "dev": $([[${NODE_ENV} !== "development"]] && echo true || echo false),
-    "host": "example.com",
-    "api_url": "https://api.example.com",
-    "data_url": "https://data.example.com"
-}
