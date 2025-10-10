@@ -33,6 +33,7 @@ const App: FC = (): ReactNode => {
                         <Route path="/members" element={<MembersPage />} />
                         <Route path="/club" element={<ClubPage />} />
                         <Route path="/members" element={<MembersPage />} />
+                        <Route path="/club" element={<ClubPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Suspense>
