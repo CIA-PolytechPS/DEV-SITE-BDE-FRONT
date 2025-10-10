@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect } from "react";
 import ClubsSectionComp from "./clubs.section";
+import "@/ui/pages/clubs/clubs.page.css";
 
 const ClubPage: FC = (): ReactNode => {
     useEffect(() => {
@@ -13,6 +14,7 @@ const ClubPage: FC = (): ReactNode => {
     return (
         <>
             <ClubsSectionComp />
+            <div className="separator"></div>
         </>
     );
 };
