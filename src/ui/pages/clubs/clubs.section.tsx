@@ -2,18 +2,18 @@ import { FC, ReactNode } from "react";
 
 const ClubsSectionComp: FC = (): ReactNode => {
     return (
-        <section>
-            <div>
-                <div>
-                    <img src="/public/logo512.png" alt="Ceci est une image." />
-                    <p>Source : Hello World</p>
+        <section className="py-16 px-8">
+            <div className="max-w-6xl mx-auto grid grid-cols-[35%_65%] gap-10 items-start">
+                <div className="">
+                    <img src="/fillingPic.gif" alt="Ceci est une image." />
+                    <p className="text-zinc-500">Source : Hello World</p>
                 </div>
 
-                <div>
-                    <h2>Les Clubs du BDE</h2>
-                    <p>L'adhésion au BDE vous permet d'accéder à une multitude de Clubs.</p>
+                <div className="">
+                    <h2 className="font-semibold text-5xl tracking-tighter mb-2">Les Clubs du BDE</h2>
+                    <p className="mb-4">L'adhésion au BDE vous permet d'accéder à une multitude de Clubs.</p>
 
-                    <div>
+                    <div className="space-y-2">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dictum bibendum eros, nec ornare dolor luctus a. Donec
                             mattis viverra dolor, sed semper libero consectetur a. Curabitur quis magna facilisis, congue ipsum non, commodo diam.
