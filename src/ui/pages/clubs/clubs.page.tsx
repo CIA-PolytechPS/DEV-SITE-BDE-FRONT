@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect } from "react";
-import ClubsSectionComp from "./clubs.section";
+import ClubsSectionComp from "../../components/clubs/clubssection.component";
+import ClubsListComp from "../../components/clubs/clubslist.component";
 import "@/ui/pages/clubs/clubs.page.css";
 
 const ClubPage: FC = (): ReactNode => {
@@ -14,7 +15,8 @@ const ClubPage: FC = (): ReactNode => {
     return (
         <>
             <ClubsSectionComp />
-            <div className="separator"></div>
+            <div className="separator" />
+            <ClubsListComp />
         </>
     );
 };
