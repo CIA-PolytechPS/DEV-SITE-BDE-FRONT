@@ -1,49 +1,31 @@
 import { FC } from "react";
-import { Club } from "@/shared/models/club.model";
-import { useNavigate } from "react-router-dom";
+import { Club } from "./clubslist.component";
 
-interface ClubCardProp {
-    club: Club;
-}
-
-const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
-    const navigate = useNavigate();
-
+const ClubCardComp: FC<Club> = ({ nom, logo, description }) => {
     return (
-        <div
-            className="
-            flex flex-col md:flex-row items-start mx-auto my-5 bg-[#FFFDED] backdrop-blur-lg border
-            border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
-            rounded-3xl w-full max-w-5xl p-6 hover:shadow-[0_3px_10px_0_rgba(31,38,135,0.37)]
-            hover:border-white/40
-            hover:-translate-y-2
-            transition-all duration-300 ease-in-out
-            "
-        >
-            <div className="flex-shrink-0 w-64 h-64 overflow-hidden rounded-full">
-                <img src={props.club.image_location} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
-            </div>
-
-            <div className="flex flex-col grow-1 justify-between ml-5">
-                <div className="flex justify-between items-start my-0">
-                    <h2 className="text-[35px] my-0 leading-none">{props.club.name}</h2>
-
-                    <button
-                        className="hover:bg-[#58AEFF] font-medium text-sm px-4 py-1 rounded-lg translate-y-1/8
-                        border-blue-400 border-2"
-                        onClick={
-                            () => {
-                                void navigate(`/club/${props.club.short_name}`);
-                            }
-                        }
-                    >
-                        More
-                    </button>
+        <>
+            <div
+                className="flex flex-col md:flex-row items-start mx-auto my-5
+            border border-white shadow-2xl rounded-3xl bg-[#323232] w-full max-w-5xl p-4
+            hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300 ease-in-out"
+            >
+                <div className="flex-shrink-0 w-64 h-64 overflow-hidden">
+                    <img src={logo} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
                 </div>
 
-                <p className="mt-2 text-lg leading-relaxed">{props.club.description}</p>
+                <div className="flex flex-col justify-between ml-2">
+                    <div className="flex justify-between items-start my-0">
+                        <h2 className="text-[35px] my-0 leading-none">{nom}</h2>
+
+                        <button className="bg-[#FFAA00] hover:bg-[#e2910e] text-black font-medium text-sm px-4 py-1 rounded-lg translate-y-1/8  ">
+                            More
+                        </button>
+                    </div>
+
+                    <p className="mt-2 text-sm text-[#FFFFFFd9] leading-relaxed">{description}</p>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
