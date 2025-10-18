@@ -10,7 +10,7 @@ const ClubsSectionComp: FC = (): ReactNode => {
                 </div>
 
                 <div className="">
-                    <h2 className="font-semibold text-5xl tracking-tighter mb-2">Les Clubs du BDE</h2>
+                    <h1 className="font-semibold text-5xl tracking-tighter mb-2">Les Clubs du BDE</h1>
                     <p className="mb-4">L'adhésion au BDE vous permet d'accéder à une multitude de Clubs.</p>
 
                     <div className="space-y-2">
