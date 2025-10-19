@@ -2,7 +2,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter',sans-serif;
 }
 
 head {
@@ -16,7 +16,10 @@ body {
     z-index: 0;
     margin: 0;
     padding: 0;
-    background-image: repeating-linear-gradient(
+    background: #1E1E1E;
+    color : #F5F5F7;
+    
+    /*background-image: repeating-linear-gradient(
         140deg,
         #c99828 0%,
         #ca9a29 10%,
@@ -31,13 +34,36 @@ body {
     );
     background-size: 200% 200%;
     background-repeat: repeat;
-    animation: animation-gold-shimmer 10s linear infinite;
+    animation: animation-gold-shimmer 10s linear infinite;*/
 }
 
-@keyframes animation-gold-shimmer {
+h1 , h2 {
+    color : #FFB400;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 600; /* This is semi-bold*/
+}
+h2{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+button {
+    background-color: #FFB400;
+    color: black;
+}
+
+button:hover{
+  background-color: #ffc131;
+  box-shadow: 0 4px 10px rgba(255, 180, 0, 0.3);
+}
+
+/*@keyframes animation-gold-shimmer {
     0% { background-position: 0 0; }
     100% { background-position: 100% 100%; }
-}
+}*/
 
 #root {
     width: 100%;
