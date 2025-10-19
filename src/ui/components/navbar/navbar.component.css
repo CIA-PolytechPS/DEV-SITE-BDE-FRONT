@@ -10,18 +10,6 @@
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    background-color: #58aeff;
-    font-size: 1rem;
-
-    @media (width <= 60rem) and (height <= 48rem) {
-        height: 2rem;
-        font-size: 0.7rem;
-    }
-
-    @media (width >= 130rem) or (height >= 90rem) {
-        height: 4.5rem;
-        font-size: 1.5rem;
-    }
 
     & > .navbar-title {
         margin: 0;
