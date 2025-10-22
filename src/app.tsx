@@ -12,7 +12,6 @@ const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); 
 const MembersPage  = lazy(() => { return import("@/ui/pages/members/members.page"); });
 const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
 
-
 const App: FC = (): ReactNode => {
     useEffect(() => {
         console.log("Loaded: App");
@@ -33,6 +32,7 @@ const App: FC = (): ReactNode => {
                         <Route path="/club" element={<ClubPage />} />
                         <Route path="/members" element={<MembersPage />} />
                         <Route path="/club" element={<ClubPage />} />
+                        <Route path="/members" element={<MembersPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Suspense>
