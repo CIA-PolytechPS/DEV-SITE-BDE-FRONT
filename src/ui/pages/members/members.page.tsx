@@ -1,8 +1,9 @@
 import { FC, ReactNode, useEffect } from "react";
-import MembersSectionComp from "@/ui/components/members/section.component";
-import MembersListComp from "@/ui/components/members/list.component";
+import "@/ui/pages/members/members.page.css";
 
-const MemberPage: FC = (): ReactNode => {
+import MembersSectionComp from "../../components/clubs/memberssection.component";
+
+const HomePage: FC = (): ReactNode => {
     useEffect(() => {
         console.log("Loaded: MembersPage");
     }, []);
@@ -14,10 +15,8 @@ const MemberPage: FC = (): ReactNode => {
     return (
         <>
             <MembersSectionComp />
-            <hr />
-            <MembersListComp />
         </>
     );
 };
 
-export default MemberPage;
+export default HomePage;
