@@ -13,19 +13,13 @@ const HomePage: FC = (): ReactNode => {
     });
 
     return (
-        <>
-            <div className="bg-[#D0D0D0] rounded-8">
-                <div className="m-8">
-                    <h2 className="text">BDE Polytech Paris-Saclay</h2>
-                    <p className="small-text">Bienvenue sur le site du BDE !</p>
-                    <p className="small-text">Retrouvez toutes les activités et évenements !</p>
-                </div>
-            </div>
-
-            <h1 className="text-red-500">In development</h1>
-            <CircularProgress />
-            <TimelineComp />
-        </>
+        <div>
+            <h1>BDE Polytech Saclay</h1>
+            <>
+                <h1 className="text-red-500">In development</h1>
+                <CircularProgress />
+            </>
+        </div>
     );
 };
 
