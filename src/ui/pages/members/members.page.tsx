@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect } from "react";
 import "@/ui/pages/members/members.page.css";
 
-import MembersSectionComp from "../../components/clubs/memberssection.component";
+import MembersSectionComp from "../../components/members/memberssection.component";
 
 const HomePage: FC = (): ReactNode => {
     useEffect(() => {
