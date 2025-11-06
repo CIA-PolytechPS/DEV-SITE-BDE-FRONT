@@ -1,0 +1,6 @@
+.separator {
+  width: 60%;
+  height: 2px;
+  background: #FFAA00; /* effet doré */
+  border-radius: 2px;
+}
