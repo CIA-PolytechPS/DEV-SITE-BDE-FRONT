@@ -12,10 +12,13 @@ const HomePage: FC = (): ReactNode => {
     });
 
     return (
-        <>
-            <h1 className="text-red-500">In development</h1>
-            <CircularProgress />
-        </>
+        <div>
+            <h1>BDE Polytech Saclay</h1>
+            <>
+                <h1 className="text-red-500">In development</h1>
+                <CircularProgress />
+            </>
+        </div>
     );
 };
 
