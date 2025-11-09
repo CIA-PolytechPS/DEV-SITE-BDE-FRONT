@@ -1,7 +1,6 @@
 import { FC, ReactNode, useEffect } from "react";
-
-import MembersSectionComp from "../../components/members/memberssection.component";
-import MembersListComp from "../../components/members/memberslist.component";
+import MembersSectionComp from "@/ui/components/members/section.component";
+import MembersListComp from "@/ui/components/members/list.component";
 
 const HomePage: FC = (): ReactNode => {
     useEffect(() => {
@@ -15,7 +14,7 @@ const HomePage: FC = (): ReactNode => {
     return (
         <>
             <MembersSectionComp />
-            <div className="separator" />
+            <hr />
             <MembersListComp />
         </>
     );
