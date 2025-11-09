@@ -86,7 +86,7 @@ button:hover{
     align-items: center;
 }
 
-.separator {
+hr {
   width: 60%;
   height: 2px;
   background: #FFAA00; /* effet doré */
