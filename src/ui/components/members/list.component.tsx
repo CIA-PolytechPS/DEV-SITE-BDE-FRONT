@@ -24,8 +24,8 @@ const MembersListComp: FC = (): ReactNode => {
                     ? <CircularProgress />
                     : (
                         <div className="mt-[3%]">
-                            {members.map((club) => {
-                                return <MemberCard key={club.nom} {...club} />;
+                            {members.map((member) => {
+                                return <MemberCard member={member} />;
                             })}
                         </div>
                     )}
