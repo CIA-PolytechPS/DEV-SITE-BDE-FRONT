@@ -1,18 +1,19 @@
-/* TODO */
 .title{
     background-color: rgba(60, 60, 60, 0.661);
     border-radius: 1em;
     margin-top: 1em;
 }
-.zoneTexte{
+
+.text-area{
     margin-left: 1em;
     margin-right: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
 }
-.txt{
-    color:white;
+.text{
+    color: white;
 }
-.smltxt{
+
+.small-text{
     font-size: 1em;
 }
