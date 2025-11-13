@@ -13,8 +13,17 @@ const HomePage: FC = (): ReactNode => {
 
     return (
         <>
+            <div className="title">
+                <div className="text-area">
+                    <h2 className="text">BDE Polytech Paris-Saclay</h2>
+                    <p className="small-text">Bienvenu sur le site du BDE !</p>
+                    <p className="small-text">Retrouvez toutes les activités et évenements !</p>
+                </div>
+            </div>
+
             <h1 className="text-red-500">In development</h1>
             <CircularProgress />
+
         </>
     );
 };
