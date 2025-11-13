@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect } from "react";
 import MembersSectionComp from "@/ui/components/members/section.component";
 import MembersListComp from "@/ui/components/members/list.component";
 
-const HomePage: FC = (): ReactNode => {
+const MemberPage: FC = (): ReactNode => {
     useEffect(() => {
         console.log("Loaded: MembersPage");
     }, []);
@@ -20,4 +20,4 @@ const HomePage: FC = (): ReactNode => {
     );
 };
 
-export default HomePage;
+export default MemberPage;
