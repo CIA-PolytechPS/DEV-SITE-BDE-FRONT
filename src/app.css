@@ -85,3 +85,10 @@ button:hover{
     justify-content: center;
     align-items: center;
 }
+
+hr {
+  width: 60%;
+  height: 2px;
+  background: #FFAA00; /* effet doré */
+  border-radius: 2px;
+}
