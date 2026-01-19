@@ -14,11 +14,11 @@ const HomePage: FC = (): ReactNode => {
 
     return (
         <>
-            <div className="title">
-                <div className="text-area">
+            <div className="bg-[#D0D0D0] rounded-8">
+                <div className="m-8">
                     <h2 className="text">BDE Polytech Paris-Saclay</h2>
-                    <p className="small-text">Bienvenu sur le site du BDE !</p>
-                    <p className="small-text">Retrouvez toutes les activités et évenements !</p>
+                    <p className="text-[15px]">Bienvenu sur le site du BDE !</p>
+                    <p className="text-[15px]">Retrouvez toutes les activités et évenements !</p>
                 </div>
             </div>
 

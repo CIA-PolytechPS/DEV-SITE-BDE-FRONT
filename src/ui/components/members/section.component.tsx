@@ -19,7 +19,7 @@ pharetra eget sodales eget, bibendum quis velit. Mauris nunc justo, porta conseq
 
 const MembersSectionComp: FC = (): ReactNode => {
     return (
-        <section className="flex justify-center items-center py-16 px-8">
+        <section className="flex justify-center items-center py-12 px-8">
             <div className="flex flex-col max-w-7xl justify-between items-center gap-10 md:flex-row">
                 <div className="basis-1/3">
                     <img className="object-contain" src="/logo512.png" alt="Ceci est une image." />
