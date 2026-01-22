@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import "@/ui/pages/home/home.page.css";
-import EventsComp from "@/ui/components/common/events.component";
+import TimelineComp from "@/ui/components/timeline/timeline.component";
 
 const HomePage: FC = (): ReactNode => {
     useEffect(() => {
@@ -24,7 +24,7 @@ const HomePage: FC = (): ReactNode => {
 
             <h1 className="text-red-500">In development</h1>
             <CircularProgress />
-            <EventsComp />
+            <TimelineComp />
         </>
     );
 };

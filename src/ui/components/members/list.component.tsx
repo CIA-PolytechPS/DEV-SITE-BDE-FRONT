@@ -17,7 +17,7 @@ const MembersListComp: FC = (): ReactNode => {
         <>
             <div className="w-4/5 m-[2%]">
                 <div className="w-full">
-                    <h1 className="underline text-5xl font-semibold">Les Membres du Bureau</h1>
+                    <h1 className="underline text-5xl font-semibold">Les Evenements à venir :</h1>
                 </div>
 
                 {members.length === 0
