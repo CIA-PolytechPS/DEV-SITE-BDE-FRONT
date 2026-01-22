@@ -22,19 +22,23 @@ const TimelineComp: FC = (): ReactNode => {
                 <h1 className="underline underline-offset-3 text-5xl font-semibold">Evenements à Venir</h1>
             </div>
 
-            {events.length === 0
-                ? <CircularProgress />
-                : (
-                    <div className="timeline">
-                        {events.map((event) => {
-                            return (
-                                <div className="container right">
-                                    <EventCard event={event} />
-                                </div>
-                            );
-                        })}
-                    </div>
-                )}
+            {
+                events.length === 0
+                    ? <CircularProgress />
+                    : (
+                        <div className="timeline">
+                            {
+                                events.map((event) => {
+                                    return (
+                                        <div className="container right">
+                                            <EventCard event={event} />
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+                    )
+            }
         </div>
     );
 };
