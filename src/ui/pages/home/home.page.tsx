@@ -24,7 +24,7 @@ const HomePage: FC = (): ReactNode => {
 
             <h1 className="text-red-500">In development</h1>
             <CircularProgress />
-
+            <TimelineComp />
         </>
     );
 };

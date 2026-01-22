@@ -3,7 +3,6 @@ import { getEvents } from "@/api/event.api";
 import { Event } from "@/shared/models/event.model";
 import EventCard from "@/ui/components/timeline/eventCard.component";
 import { CircularProgress } from "@mui/material";
-import "@/ui/components/timeline/timeline.component.css";
 
 const TimelineComp: FC = (): ReactNode => {
     const [events, setevents] = useState<Event[]>([]);
@@ -16,30 +15,28 @@ const TimelineComp: FC = (): ReactNode => {
         console.log("Loaded: Events");
     }, []);
 
-    return (
-        <div className="w-7/8 m-[2%]">
-            <div className="w-full">
-                <h1 className="underline underline-offset-3 text-5xl font-semibold">Evenements à Venir</h1>
-            </div>
+    useEffect(() => {
+        console.log("Rendered: Events");
+    });
 
-            {
-                events.length === 0
+    return (
+        <>
+            <div className="w-7/8 m-[2%]">
+                <div className="w-full">
+                    <h1 className="underline underline-offset-3 text-5xl font-semibold">Les Membres du Bureau</h1>
+                </div>
+
+                {events.length === 0
                     ? <CircularProgress />
                     : (
-                        <div className="timeline">
-                            {
-                                events.map((event) => {
-                                    return (
-                                        <div className="container right">
-                                            <EventCard event={event} />
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    )
-            }
-        </div>
+                        <ul className="mt-[3%] columns-1">
+                            {events.map((event) => {
+                                return <EventCard event={event} />;
+                            })}
+                        </ul>
+                    )}
+            </div>
+        </>
     );
 };
 
