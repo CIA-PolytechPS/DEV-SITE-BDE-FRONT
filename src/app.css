@@ -16,8 +16,8 @@ body {
     z-index: 0;
     margin: 0;
     padding: 0;
-    background: #1E1E1E;
-    color : #F5F5F7;
+    background: #F5F5F5;
+    color : #202020;
     
     /*background-image: repeating-linear-gradient(
         140deg,
@@ -35,10 +35,6 @@ body {
     background-size: 200% 200%;
     background-repeat: repeat;
     animation: animation-gold-shimmer 10s linear infinite;*/
-}
-
-h1 , h2 {
-    color : #FFB400;
 }
 
 h1 {
@@ -89,6 +85,6 @@ button:hover{
 hr {
   width: 60%;
   height: 2px;
-  background: #FFAA00; /* effet doré */
+  background: #003e8f; /* effet doré */
   border-radius: 2px;
 }
