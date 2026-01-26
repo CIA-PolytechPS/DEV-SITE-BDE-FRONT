@@ -17,7 +17,7 @@ const HomePage: FC = (): ReactNode => {
             <div className="title">
                 <div className="text-area">
                     <h2 className="text">BDE Polytech Paris-Saclay</h2>
-                    <p className="small-text">Bienvenu sur le site du BDE !</p>
+                    <p className="small-text">Bienvenue sur le site du BDE !</p>
                     <p className="small-text">Retrouvez toutes les activités et évenements !</p>
                 </div>
             </div>

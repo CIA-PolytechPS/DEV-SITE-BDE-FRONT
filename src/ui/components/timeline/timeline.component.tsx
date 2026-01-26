@@ -21,9 +21,10 @@ const TimelineComp: FC = (): ReactNode => {
 
     return (
         <>
+            <link href="timeline.component.css" rel="stylesheet"/>
             <div className="w-7/8 m-[2%]">
                 <div className="w-full">
-                    <h1 className="underline underline-offset-3 text-5xl font-semibold">Les Membres du Bureau</h1>
+                    <h1 className="underline underline-offset-3 text-5xl font-semibold">Evenements à Venir</h1>
                 </div>
 
                 {events.length === 0
@@ -33,7 +34,22 @@ const TimelineComp: FC = (): ReactNode => {
                             {events.map((event) => {
                                 return <EventCard event={event} />;
                             })}
+                             <div className="timeline">
+                                <div className="container left">
+                                    <div className="content">
+                                        <h2>2017</h2>
+                                        <p>Lorem ipsum..</p>
+                                    </div>
+                                </div>
+                                <div className="container right">
+                                    <div className="content">
+                                        <h2>2016</h2>
+                                        <p>Lorem ipsum..</p>
+                                    </div>
+                                </div>
+                            </div> 
                         </ul>
+                        
                     )}
             </div>
         </>
