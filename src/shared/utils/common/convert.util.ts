@@ -42,3 +42,13 @@ export function unknownToDate(obj: unknown): Date {
         }
     }
 }
+
+export const unknownToArrayOf = <T>(itemMapper: (item: unknown) => T) => {
+    return (input: unknown): T[] => {
+        if (!Array.isArray(input)) {
+            return [];
+        }
+
+        return input.map(itemMapper);
+    };
+};
