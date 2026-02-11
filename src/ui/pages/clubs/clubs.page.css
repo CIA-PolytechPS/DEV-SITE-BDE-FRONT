@@ -1,6 +1,7 @@
 .separator {
-    width: 60%;
-    height: 2px;
-    background: #003e8f; /* effet doré */
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #003e8f, transparent);
     border-radius: 2px;
+    margin: 0 auto;
 }
