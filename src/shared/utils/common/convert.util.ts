@@ -43,14 +43,12 @@ export function unknownToDate(obj: unknown): Date {
     }
 }
 
-// convert unknown to array of T using itemMapper, return empty array if input is not an array
-export function unknownToArray<T>(itemMapper: (item: unknown) => T): (obj:unknown) => T[] {
-    return (obj: unknown): T[] => {
-        if (Array.isArray(obj)) {
-            return obj.map(itemMapper);
-        }
-        else {
+export const unknownToArrayOf = <T>(itemMapper: (item: unknown) => T) => {
+    return (input: unknown): T[] => {
+        if (!Array.isArray(input)) {
             return [];
         }
+
+        return input.map(itemMapper);
     };
-}
+};
