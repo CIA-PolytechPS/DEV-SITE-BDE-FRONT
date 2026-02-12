@@ -8,9 +8,7 @@ const ClubsListComp: FC = (): ReactNode => {
 
     useEffect(() => {
         getAllClubs()
-            .then((clubs) => {
-                setClubs(clubs);
-            })
+            .then(setClubs)
             .catch(console.error);
     }, []);
 
