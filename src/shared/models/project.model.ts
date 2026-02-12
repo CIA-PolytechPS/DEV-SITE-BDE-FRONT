@@ -1,0 +1,20 @@
+import { unknownToDate, unknownToNumber, unknownToString } from "@/shared/utils/common/convert.util";
+import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
+
+export interface Project {
+    id            : number;
+    club_id       : number;
+    title         : string;
+    date          : Date;
+    description   : string;
+    image_location: string;
+}
+
+export const mapProject = createMapper<Project>({
+    id            : createConverter(unknownToNumber, -1),
+    club_id       : createConverter(unknownToNumber, -1), // eslint-disable-line @typescript-eslint/naming-convention
+    title         : createConverter(unknownToString, ""),
+    date          : createConverter(unknownToDate, new Date()),
+    description   : createConverter(unknownToString, ""),
+    image_location: createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
+});
