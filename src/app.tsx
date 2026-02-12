@@ -11,8 +11,7 @@ const HomePage         = lazy(() => { return import("@/ui/pages/home/home.page")
 const NotFoundPage     = lazy(() => { return import("@/ui/pages/not_found.page"); });
 const ClubPage         = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
 const MembersPage  = lazy(() => { return import("@/ui/pages/members/members.page"); });
-const DetailedClubPage = lazy(() => { return import("@/ui/pages/club/detailedclub.page"); });
-
+const DetailedClubPage = lazy(() => { return import("@/ui/pages/clubs/{name}/detailedclub.page"); });
 
 const App: FC = (): ReactNode => {
     useEffect(() => {
