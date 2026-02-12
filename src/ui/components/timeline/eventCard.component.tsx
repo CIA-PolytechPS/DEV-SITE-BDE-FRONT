@@ -1,5 +1,9 @@
 import { FC } from "react";
 import { Event } from "@/shared/models/event.model";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import GroupsIcon from "@mui/icons-material/Groups";
+import PlaceIcon from "@mui/icons-material/Place";
+import CalendarIcon from "@mui/icons-material/CalendarMonth";
 
 // import PersonIcon from "@mui/icons-material/Person";
 
@@ -21,27 +25,34 @@ const MemberCardComp: FC<EventCardProps> = (props: EventCardProps) => {
 
                 <div className="flex flex-col justify-between mx-3">
                     <div className="flex-2 flex flex-col justify-around item-center my-0">
-                        <div className="flex inline-flex items-center my-0">
-                            <h3 className="text-[25px] sm:text-[30px] lg:text-[25px] my-0 leading-none pt-1">{props.event.nom}</h3>
+                        <div className="flex inline-flex items-center my-0 mb-5">
+                            <BookmarkIcon />
+
+                            <a
+                                className="text-[30px] sm:text-[30px] lg:text-[25px] my-0 leading-none pt-1 ml-1"
+                                href={"/events/" + String(props.event.id)}
+                            >
+                                {props.event.nom}
+                            </a>
                         </div>
 
-                        <h3 className="flex text-[20px] my-0 leading-none pt-1">{props.event.participants}</h3>
-                    </div>
-
-                    <div className="inline-flex flex-1 justify-between my-0 pt-2">
-                        <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1">
-                            {props.event.datedebut.toLocaleString("fr-FR")}
-                        </h3>
-                    </div>
-
-                    <div className="inline-flex flex-1 justify-between my-0 pt-2">
-                        <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1">
-                            {props.event.datefin.toLocaleString("fr-FR")}
-                        </h3>
-                    </div>
-
-                    <div className="inline-flex flex-1 justify-between my-0 pt-2">
-                        <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1">{props.event.lieu}</h3>
+                        <div className="flex inline-flex items-center my-0">
+                            <GroupsIcon />
+                            <h3 className="flex text-[20px] my-0 leading-none pt-1 ml-2 mr-4">{props.event.participants} participants</h3>
+                            <PlaceIcon />
+                            <h3 className="flex text-[20px] my-0 leading-none pt-1 ml-1 mr-4">{props.event.lieu}</h3>
+                            <CalendarIcon />
+                            
+                            <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1 ml-1 mr-4">
+                                {props.event.datedebut.toLocaleString("fr-FR")}
+                            </h3>
+                            
+                            <CalendarIcon />
+                            
+                            <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1 ml-1 mr-4">
+                                {props.event.datefin.toLocaleString("fr-FR")}
+                            </h3>
+                        </div>
                     </div>
 
                     <div className="inline-flex flex-1 justify-between my-0 pt-2">

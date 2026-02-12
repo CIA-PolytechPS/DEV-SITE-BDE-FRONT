@@ -2,6 +2,7 @@ import { unknownToString, unknownToDate, unknownToNumber } from "@/shared/utils/
 import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
 
 export interface Event {
+    id          : number;
     nom         : string;
     photo       : string;
     participants: number;
@@ -12,7 +13,7 @@ export interface Event {
 }
 
 export const mapEvents = createMapper<Event>({
-
+    id          : createConverter(unknownToNumber, -1),
     nom         : createConverter(unknownToString, ""),
     photo       : createConverter(unknownToString, ""),
     participants: createConverter(unknownToNumber, 0),
