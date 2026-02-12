@@ -1,7 +1,7 @@
-import { unknownToNumber, unknownToString, unknownToArrayOf } from "../utils/common/convert.util";
-import { createMapper, createConverter } from "../utils/common/mapper.util";
-import { mapEvent, Event } from "./event.model";
-import { mapProject, Project } from "./project.model";
+import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
+import { unknownToArray, unknownToNumber, unknownToString } from "@/shared/utils/common/convert.util";
+import { Event, mapEvent } from "@/shared/models/event.model";
+import { Project, mapProject } from "@/shared/models/project.model";
 
 export interface Club {
     id            : number;
@@ -19,6 +19,6 @@ export const mapClub = createMapper<Club>({
     image_location: createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
     description   : createConverter(unknownToString, ""),
     board_members : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
-    events        : createConverter(unknownToArrayOf(mapEvent), []),
-    projects      : createConverter(unknownToArrayOf(mapProject), []),
+    events        : createConverter(unknownToArray(mapEvent), []),
+    projects      : createConverter(unknownToArray(mapProject), []),
 });

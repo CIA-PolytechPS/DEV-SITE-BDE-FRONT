@@ -1,5 +1,5 @@
-import { unknownToDate, unknownToNumber, unknownToString } from "../utils/common/convert.util";
-import { createConverter, createMapper } from "../utils/common/mapper.util";
+import { unknownToDate, unknownToNumber, unknownToString } from "@/shared/utils/common/convert.util";
+import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
 
 export interface Project {
     id            : number;
