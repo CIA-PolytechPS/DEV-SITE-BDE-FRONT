@@ -5,7 +5,7 @@ const ClubsSectionComp: FC = (): ReactNode => {
         <section className="py-16 px-8 bg-[#FFFDED] w-screen relative left-1/2 -translate-x-1/2">
             <div className="max-w-6xl mx-auto grid grid-cols-[35%_65%] gap-10 items-start">
                 <div className="">
-                    <img className="rounded-2xl" src="/fillingPic.gif" alt="Ceci est une image." />
+                    <img className="rounded-2xl" src="/images/fillingPic.gif" alt="Ceci est une image." />
                     <p className="text-zinc-500">Source : Hello World</p>
                 </div>
 

@@ -134,3 +134,11 @@ hr {
     background: #003e8f;
     border-radius: 2px;
 }
+
+.separator {
+    width: 100%;
+    height: 0.8vh;
+    background: linear-gradient(to right, transparent, #003e8f, transparent);
+    border-radius: 1vh;
+    margin: 0 auto;
+}
