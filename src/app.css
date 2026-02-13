@@ -103,10 +103,3 @@
   @apply w-full h-[0.8vh] mx-auto rounded-[1vh];
   background: linear-gradient(to right, transparent, var(--color-primary), transparent);
 }
-
-hr {
-  width: 60%;
-  height: 2px;
-  background: #003e8f; /* effet doré */
-  border-radius: 2px;
-}
