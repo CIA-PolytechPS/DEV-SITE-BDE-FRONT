@@ -56,8 +56,7 @@
   /* Global styles */
   * {
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
+  }
 
   body {
     @apply w-screen h-screen overflow-hidden m-0 p-0 -z-0 font-sans;
@@ -65,59 +64,31 @@
     @apply transition-colors duration-300;
   }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 0;
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
-    color: #202020;
+  h1 {
+    @apply text-primary text-5xl font-semibold;
+  }
 
-    /*background-image: repeating-linear-gradient(
-        140deg,
-        #c99828 0%,
-        #ca9a29 10%,
-        #cb9b2b 15%,
-        #ce9f30 20%,
-        #d8b647 24%,
-        #d8b647 26%,
-        #ce9f30 30%,
-        #cb9b2b 35%,
-        #ca9a29 40%,
-        #c99828 50%
-    );
-    background-size: 200% 200%;
-    background-repeat: repeat;
-    animation: animation-gold-shimmer 10s linear infinite;*/
-}
+  h2 {
+    @apply text-primary text-4xl font-semibold;
+  }
 
-h1 {
-    font-size: 48px;
-    font-weight: 600; /* This is semi-bold*/
-    color: #0061bb;
-}
-h2 {
-    font-size: 40px;
-    font-weight: 600;
-    color: #0061bb;
-}
+  button {
+    @apply bg-accent text-black;
+    @apply transition-all duration-200; 
+  }
 
-button {
-    background-color: #58aeff;
-    color: black;
-}
+  button:hover {
+    @apply bg-accent-hover shadow-[0_4px_10px_rgba(63,162,255,0.3)];
+  }
 
-button:hover {
-    background-color: rgb(63, 162, 255);
-    box-shadow: 0 4px 10px rgba(63, 162, 255, 0.3);
-}
+  :root.dark button:hover {
+    @apply shadow-[0_4px_10px_rgba(56,189,248,0.3)];
+  }
 
-/*@keyframes animation-gold-shimmer {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}*/
+  hr {
+    @apply w-[60%] h-[2px] bg-secondary rounded-[2px] border-0;
+  }
+}
 
 #root {
   @apply w-full h-full flex flex-col overflow-x-hidden overflow-y-auto;
@@ -128,17 +99,7 @@ button:hover {
   @apply w-full h-auto flex-1 flex flex-col flex-nowrap justify-center items-center;
 }
 
-hr {
-    width: 60%;
-    height: 2px;
-    background: #003e8f;
-    border-radius: 2px;
-}
-
 .separator {
-    width: 100%;
-    height: 0.8vh;
-    background: linear-gradient(to right, transparent, #003e8f, transparent);
-    border-radius: 1vh;
-    margin: 0 auto;
+  @apply w-full h-[0.8vh] mx-auto rounded-[1vh];
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
 }
