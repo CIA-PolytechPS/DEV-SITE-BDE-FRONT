@@ -1,0 +1,59 @@
+
+.event-modification-comp{
+    display: flex;
+    flex-direction: row;
+    
+    --text-color-primary: #202020;
+    --text-color-seconday: #7C7C7C;
+    --text-color-brand: #0061BB;
+    --text-color-invert: #F5F5F5;
+
+    --surface-color-primary: #F5F5F5;
+    --surface-color-seconday: #343434;
+    --surface-color-brand: #202020;
+    --surface-color-invert: #58AEFF;
+
+    --border-color-primary: #202020;
+    --border-color-secondary: #0061BB;
+    
+    background-color: var(--surface-color-primary);
+}
+
+.event-modification-comp h3 {
+    font-weight: bold;
+    color: var(--text-color-brand);
+}
+
+.event-form {
+    width: 80%; 
+}
+
+.event-form .col3 {
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.event-form .col2 {
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.event-form .form-field{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.event-form .form-field.form-field-date{
+    width: 50%;
+}
+
+.event-form .form-field.form-field-time{
+    width: 50%;
+}
+
+.event-form .form-field.form-field-number{
+    width: 50%;
+}

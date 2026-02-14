@@ -1,0 +1,21 @@
+
+
+
+.event-form label {
+    font-weight: bold;
+    color: var(--text-color-brand);
+}
+
+.event-form svg > path {
+    color: var(--text-color-brand);
+}
+
+.event-form input[type=text], .event-form input[type=date], .event-form input[type=time], .event-form input[type=number] {
+    width: 100%;
+    padding: 4px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: var(--text-color-primary);
+    border: var(--border-color-primary) 1px solid;
+}
