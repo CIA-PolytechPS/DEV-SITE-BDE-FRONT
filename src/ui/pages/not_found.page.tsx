@@ -14,6 +14,7 @@ const NotFoundPage: FC = (): ReactNode => {
             <h1 style={{ textAlign: "center" }}>Page not found :(</h1>
             <p>Maybe it is under development</p>
             <p>Or just you try something bad</p>
+            <img src="https://http.cat/status/404.png" />
         </>
     );
 };
