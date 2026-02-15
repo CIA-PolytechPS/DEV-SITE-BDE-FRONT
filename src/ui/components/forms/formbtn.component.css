@@ -10,16 +10,6 @@
     margin-left: 6px;
 }
 
-.event-form input[type=text] {
-    width: 100%;
-    padding: 4px;
-    margin: 2px 0;
-    box-sizing: border-box;
-    border-radius: 4px;
-    color: black;
-    border: black 1px solid;
-}
-
 .event-form button {
     width: 100%;
     padding: 4px;

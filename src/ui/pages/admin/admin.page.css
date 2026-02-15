@@ -1,8 +1,5 @@
 
-.event-modification-comp{
-    display: flex;
-    flex-direction: row;
-    
+.event-modification-page{
     --text-color-primary: #202020;
     --text-color-seconday: #7C7C7C;
     --text-color-brand: #0061BB;
@@ -17,43 +14,20 @@
     --border-color-secondary: #0061BB;
     
     background-color: var(--surface-color-primary);
+
+    margin: 3% 10%;
 }
 
-.event-modification-comp h3 {
+.event-modification-page h3 {
     font-weight: bold;
     color: var(--text-color-brand);
 }
 
-.event-form {
-    width: 80%; 
+.event-modification-page h2 {
+    font-weight: bold;
+    color: var(--text-color-brand);
 }
 
-.event-form .col3 {
-    display:flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.event-form .col2 {
-    display:flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.event-form .form-field{
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 4px;
-}
-
-.event-form .form-field.form-field-date{
-    width: 50%;
-}
-
-.event-form .form-field.form-field-time{
-    width: 50%;
-}
-
-.event-form .form-field.form-field-number{
-    width: 50%;
+.event-modification-page text p {
+    margin: 14px 6px;
 }

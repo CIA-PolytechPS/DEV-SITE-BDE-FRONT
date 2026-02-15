@@ -1,14 +1,9 @@
 import { FC, ReactNode, useEffect } from "react";
-import TextFieldComp from "@/ui/components/forms/textfield.component";
-import DateFieldComp from "@/ui/components/forms/datefield.component";
-import TimeFieldComp from "@/ui/components/forms/timefield.component";
-import NumberFieldComp from "@/ui/components/forms/numberfield.component";
-import FormBtnComp from "@/ui/components/forms/formbtn.component";
+import EventForm from "@/ui/components/admin/eventform.component";
+import EventPageForm from "@/ui/components/admin/eventpageform.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
-import VerticalSeparatorComp from "@/ui/components/forms/verticalseparator.component";
-import Timeline from "@/ui/components/forms/timeline.component";
-import { faClone, faTrash, faLocationDot, faUsers, faImage, faCircleXmark, faCircleCheck, faHashtag } from "@fortawesome/free-solid-svg-icons";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import "@/ui/pages/admin/admin.page.css";
 
 const AdminPage: FC = (): ReactNode => {
@@ -21,46 +16,36 @@ const AdminPage: FC = (): ReactNode => {
     });
 
     return (
-        <div className="event-modification-comp">
-            <Timeline />
-            <VerticalSeparatorComp />
+        <div className="event-modification-page">
+            
+            <h2>Events Modication Page (Admin Page)</h2>
 
-            <div className="event-form">
-                <TextFieldComp text="Event Selectioned" />
+            <text>
+                <p>Select an event either from the list on the left or from the “Selected Event” section. </p>
 
-                <div className="col3">
-                    <FormBtnComp text="New Event" />
-                    <FormBtnComp text="Duplicate" icon={faClone} />
-                    <FormBtnComp text="Delete" icon={faTrash} />
-                </div>
+                <p>
+                    Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
+                    fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
+                </p>
 
-                <HorizontalSeparatorComp />
-                <TextFieldComp text="Event Title" />
-                
-                <div className="col2">
-                    <DateFieldComp text="Event Date" />
-                    <TextFieldComp text="Event Location" icon={faLocationDot} />
-                </div>
+                <p>
+                    Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
+                    consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
+                    eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
+                    plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
+                    Mediolanum ad hiberna discessit.
+                </p>
+            </text>
 
-                <div className="col2">
-                    <TimeFieldComp text="Start Time" />
-                    <TimeFieldComp text="End Time" />
-                </div>
+            <HorizontalSeparatorComp />
+            <EventForm />
 
-                <TextFieldComp text="Small Description" />
-                
-                <div className="col2">
-                    <NumberFieldComp text="Capacity" icon={faUsers} />
-                    <TextFieldComp text="Autre" icon={faHashtag} />
-                </div>
+            <h3>
+                <FontAwesomeIcon icon={faHashtag} /> Event Preview
+            </h3>
 
-                <TextFieldComp text="Image" icon={faImage} />
-                
-                <div className="col2">
-                    <FormBtnComp text="Cancel" icon={faCircleXmark} />
-                    <FormBtnComp text="Submit" icon={faCircleCheck} />
-                </div>
-            </div>
+            <HorizontalSeparatorComp />
+            <EventPageForm />
         </div>
     );
 };
