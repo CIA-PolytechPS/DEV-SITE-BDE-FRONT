@@ -1,90 +1,105 @@
 @import "tailwindcss";
 
-* {
-    box-sizing: border-box;
-    font-family: 'Inter',sans-serif;
+/*
+  Define theming variables for tailwind.
+  It will permit us to do :
+  text-primary, bg-primary, border-primary, etc... and it will adapt to the theme (light/dark).
+ */
+/* @apply is used to aplly tailwind classes in css, it's useful for global styles and theming. */
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-tertiary: var(--color-tertiary);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-bg-page: var(--color-bg-page);
+  --color-text-main: var(--color-text-main);
+  --color-text-muted: var(--color-text-muted);
+  
+  --font-sans: "Inter", sans-serif;
 }
 
-head {
-    display: none;
-}
+/* Css base styles and theming variables */
+@layer base {
+  /* light theme (classic) */
+  :root {
+    --color-primary: #0070C0;
+    --color-secondary: #FEFDF5;
+    --color-tertiary: #EBEBEB;
 
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 0;
-    margin: 0;
-    padding: 0;
-    background: #F5F5F5;
-    color : #202020;
+    --color-accent: #3FA9F5;
+    --color-accent-hover: #2C88D9;
+
+    --color-bg-page: #F4F6F8;
     
-    /*background-image: repeating-linear-gradient(
-        140deg,
-        #c99828 0%,
-        #ca9a29 10%,
-        #cb9b2b 15%,
-        #ce9f30 20%,
-        #d8b647 24%,
-        #d8b647 26%,
-        #ce9f30 30%,
-        #cb9b2b 35%,
-        #ca9a29 40%,
-        #c99828 50%
-    );
-    background-size: 200% 200%;
-    background-repeat: repeat;
-    animation: animation-gold-shimmer 10s linear infinite;*/
-}
+    --color-text-main: #1A1A1A;
+    --color-text-muted: #666666;
 
-h1 {
-    font-size: 48px;
-    font-weight: 600; /* This is semi-bold*/
-}
-h2{
-    font-size: 40px;
-    font-weight: 600;
-}
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-button {
-    background-color: #FFB400;
-    color: black;
-}
+  /* dark theme */
+:root.dark {
+    --color-primary: #60A5FA;
+    --color-secondary: #1E293B;
+    --color-tertiary: #334155;
 
-button:hover{
-  background-color: #ffc131;
-  box-shadow: 0 4px 10px rgba(255, 180, 0, 0.3);
-}
+    --color-accent: #38BDF8;
+    --color-accent-hover: #0EA5E9;
 
-/*@keyframes animation-gold-shimmer {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}*/
+    --color-bg-page: #0F172A;
+
+    --color-text-main: #E2E8F0;
+    --color-text-muted: #94A3B8;
+  }
+  /* Global styles */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply w-screen h-screen overflow-hidden m-0 p-0 -z-0 font-sans;
+    @apply bg-bg-page text-text-main;
+    @apply transition-colors duration-300;
+  }
+
+  h1 {
+    @apply text-primary text-5xl font-semibold;
+  }
+
+  h2 {
+    @apply text-primary text-4xl font-semibold;
+  }
+
+  button {
+    @apply bg-accent text-black;
+    @apply transition-all duration-200; 
+  }
+
+  button:hover {
+    @apply bg-accent-hover shadow-[0_4px_10px_rgba(63,162,255,0.3)];
+  }
+
+  :root.dark button:hover {
+    @apply shadow-[0_4px_10px_rgba(56,189,248,0.3)];
+  }
+
+  hr {
+    @apply w-[60%] h-[2px] bg-secondary rounded-[2px] border-0;
+  }
+}
 
 #root {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    display: flex;
-    flex-direction: column;
+  @apply w-full h-full flex flex-col overflow-x-hidden overflow-y-auto;
+  scrollbar-width: thin;
 }
 
 #main {
-    width: 100%;
-    height: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  @apply w-full h-auto flex-1 flex flex-col flex-nowrap justify-center items-center;
 }
 
-hr {
-  width: 60%;
-  height: 2px;
-  background: #003e8f; /* effet doré */
-  border-radius: 2px;
+.separator {
+  @apply w-full h-[0.8vh] mx-auto rounded-[1vh];
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
 }
