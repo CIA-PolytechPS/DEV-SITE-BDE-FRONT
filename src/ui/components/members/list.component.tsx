@@ -1,8 +1,9 @@
 import { FC, ReactNode, useEffect, useState } from "react";
 import { getMembers } from "@/api/member.api";
 import { Member } from "@/shared/models/member.model";
-import MemberCard from "./card.component";
+import MemberCard from "@/ui/components/members/card.component";
 import { CircularProgress } from "@mui/material";
+import { unknownToString } from "@/shared/utils/common/convert.util";
 
 const MembersListComp: FC = (): ReactNode => {
     const [members, setmembers] = useState<Member[]>([]);
@@ -10,7 +11,7 @@ const MembersListComp: FC = (): ReactNode => {
     useEffect(() => {
         getMembers()
             .then(setmembers)
-            .catch((error: unknown) => { alert("Can't retrieve Members list :" + String(error)); });
+            .catch((error: unknown) => { alert("Can't retrieve Members list :" + unknownToString(error)); });
     }, []);
 
     return (
