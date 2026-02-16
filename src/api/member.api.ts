@@ -1,23 +1,19 @@
 import { Member, mapMember } from "@/shared/models/member.model";
 
-const CLUBS: Member[] = [
-    // Replace this by the API call to gather all the clubs.
+const MEMBERS: Member[] = [
     {
-        //
         nom     : "Nom Prenom",
         photo   : "/fillingPic.gif",
         fonction: "Fonction",
         email   : "nom.prenom@universite-paris-saclay.fr",
     },
     {
-        //
         nom     : "Nom Prenom",
         photo   : "/fillingPic.gif",
         fonction: "Fonction",
         email   : "nom.prenom@universite-paris-saclay.fr",
     },
     {
-        //
         nom     : "Nom Prenom",
         photo   : "/fillingPic.gif",
         fonction: "Fonction",
@@ -28,5 +24,5 @@ const CLUBS: Member[] = [
 export async function getMembers(): Promise<Member[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return CLUBS.map((club) => { return mapMember(club); });
+    return MEMBERS.map((member) => { return mapMember(member); });
 }
