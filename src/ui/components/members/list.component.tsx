@@ -20,19 +20,23 @@ const MembersListComp: FC = (): ReactNode => {
                 <h1 className="underline underline-offset-3 text-5xl font-semibold">Les Membres du Bureau</h1>
             </div>
 
-            {members.length === 0
-                ? <CircularProgress />
-                : (
-                    <ul className="mt-[3%] columns-1 lg:columns-2">
-                        {members.map((member) => {
-                            return (
-                                <li>
-                                    <MemberCard member={member} />
-                                </li>
-                            );
-                        })}
-                    </ul>
-                )}
+            {
+                members.length === 0
+                    ? <CircularProgress />
+                    : (
+                        <ul className="mt-[3%] columns-1 lg:columns-2">
+                            {
+                                members.map((member) => {
+                                    return (
+                                        <li>
+                                            <MemberCard member={member} />
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    )
+            }
         </div>
     );
 };
