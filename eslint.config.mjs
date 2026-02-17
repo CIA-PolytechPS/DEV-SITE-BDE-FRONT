@@ -648,7 +648,7 @@ const STYLISTIC_RULES = {
     "@stylistic/jsx-closing-bracket-location": ["error", { nonEmpty: "tag-aligned", selfClosing: "tag-aligned" }],
     "@stylistic/jsx-closing-tag-location"    : ["error", "tag-aligned"],
     "@stylistic/jsx-curly-brace-presence"    : ["error", { props: "never", children: "never", propElementValues: "always" }],
-    "@stylistic/jsx-curly-newline"           : ["error", { multiline: "consistent", singleline: "consistent" }],
+    "@stylistic/jsx-curly-newline"           : ["error", { multiline: "require", singleline: "forbid" }],
     "@stylistic/jsx-curly-spacing"           : [
         "error",
         {
@@ -1237,7 +1237,20 @@ const REACT_RULES = {
      *"react/boolean-prop-naming": ["error", ],
      *"react/button-has-type": ["error", ],
      *"react/checked-requires-onchange-or-readonly": ["error", ],
-     *"react/default-props-match-prop-types": ["error", ],
+     *"react/default-props-match-prop-types": ["error", ],{members.length === 0
+                ? <CircularProgress />
+                : (
+                    <ul className="mt-[3%] columns-1 lg:columns-2">
+                        {members.map((member) => {
+                            return (
+                                <li>
+                                    <MemberCard member={member} />
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )
+            }
      *"react/destructuring-assignment": ["error", ],
      *"react/display-name": ["error", ],
      *"react/forbid-component-props": ["error", ],
