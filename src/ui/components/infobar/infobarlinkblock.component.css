@@ -30,7 +30,7 @@ li {
 }
 
 a {
-    color: #ffd600;
+    color: #202020;
     text-decoration: none;
     position: relative;
     transition: color 0.2s ease;
@@ -43,7 +43,7 @@ a {
         display: block;
         width: 0;
         height: 2px;
-        background: #ffd600;
+        background: #0061BB;
         transition: width 0.2s;
         position: absolute;
         bottom: -2px;
