@@ -24,5 +24,5 @@ const MEMBERS: Member[] = [
 export async function getMembers(): Promise<Member[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return MEMBERS.map((member) => { return mapMember(member); });
+    return MEMBERS.map(mapMember);
 }
