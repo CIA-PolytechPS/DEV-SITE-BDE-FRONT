@@ -1,5 +1,6 @@
 import { Club } from "@/shared/models/club.model";
 import { FC, ReactNode } from "react";
+import Markdown from "react-markdown";
 
 interface DetailedClubSectionProp {
     club: Club;
@@ -19,7 +20,9 @@ const DetailedClubsSectionComp: FC<DetailedClubSectionProp> = ({ club }: Detaile
 
                     <div className="space-y-2">
                         <p>
-                            {club.description}
+                            <Markdown>
+                                {club.description}
+                            </Markdown>
                         </p>
                     </div>
                 </div>

@@ -20,9 +20,11 @@ const ClubsListComp: FC = (): ReactNode => {
 
             <div className="mt-[3%]">
                 <ul>
-                    {clubs.map((club) => {
-                        return <li><ClubCard club={club} /></li>;
-                    })}
+                    {
+                        clubs.map((club) => {
+                            return <li><ClubCard club={club} /></li>;
+                        })
+                    }
                 </ul>
             </div>
         </div>
