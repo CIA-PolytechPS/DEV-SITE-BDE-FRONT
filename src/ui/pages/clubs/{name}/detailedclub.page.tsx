@@ -1,40 +1,62 @@
 import { getClubByShortName } from "@/api/club.api";
 import { Club } from "@/shared/models/club.model";
 import DetailedClubsSectionComp from "@/ui/components/clubs/detailedclubsection.component";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const DetailedClubPage : FC = ():ReactNode => {
-    const { short_name } = useParams<{ short_name: string }>();
-    const [club, setClub] = useState<Club>();
+const DetailedClubPage: FC = () => {
+    const { name: short_name } = useParams<{ name: string }>();
+    const [club, setClub] = useState<Club | undefined>(undefined);
+    const [is_loading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
-        getClubByShortName(short_name ?? "")
-            .then(setClub)
-            .catch(console.error);
-    }, []);
+        if (!short_name) {
+            setIsLoading(false);
+            setError(true);
 
-    useEffect(() => {
-        console.log("Rendered: DetailedClubPage");
-    });
+            return;
+        }
+
+        setIsLoading(true);
+        setError(false);
+
+        getClubByShortName(short_name)
+            .then((club) => {
+                setClub(club);
+
+                if (!club) setError(true);
+            })
+            .catch((err: unknown) => {
+                console.error(err);
+                setError(true);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, [short_name]);
+
+    if (is_loading) {
+        return <div className="text-center p-10">Chargement en cours...</div>;
+    }
+
+    if (error || !club) {
+        return (
+            <>
+                <h1 style={{ textAlign: "center" }}>Club Introuvable</h1>
+
+                <p style={{ textAlign: "center" }}>
+                    Le club que vous cherchez n'existe pas ou une erreur est survenue.
+                </p>
+            </>
+        );
+    }
 
     return (
-        !club
-            ? (
-                <>
-                    <h1 style={{ textAlign: "center" }}>Club Not Found</h1>
-
-                    <p style={{ textAlign: "center" }}>
-                        Le club que vous cherchez n'existe pas ou une erreur est survenue lors de la récupération de ses données.
-                    </p>
-                </>
-            )
-            : (
-                <>
-                    <DetailedClubsSectionComp club={club} />
-                    <div className="separator" />
-                </>
-            )
+        <>
+            <DetailedClubsSectionComp club={club} />
+            <div className="separator" />
+        </>
     );
 };
 

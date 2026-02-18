@@ -53,5 +53,7 @@ export async function getAllClubs(): Promise<Club[]> {
 export async function getClubByShortName(short_name: string): Promise<Club | undefined> {
     await fetch("https://jsonplaceholder.typicode.com");
     
-    return CLUBS.map(mapClub).find((club) => { return club.short_name === short_name; });
+    const raw_club = CLUBS.find((c) => { return c.short_name === short_name; });
+
+    return raw_club ? mapClub(raw_club) : undefined;
 }
