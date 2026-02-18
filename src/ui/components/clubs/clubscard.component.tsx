@@ -1,11 +1,14 @@
 import { FC } from "react";
 import { Club } from "@/shared/models/club.model";
+import { useNavigate } from "react-router-dom";
 
 interface ClubCardProp {
     club: Club;
 }
 
 const ClubCardComp: FC<ClubCardProp> = ({ club }: ClubCardProp) => {
+    const navigate = useNavigate();
+
     return (
         <div
             className="
@@ -28,6 +31,11 @@ const ClubCardComp: FC<ClubCardProp> = ({ club }: ClubCardProp) => {
                     <button
                         className="hover:bg-[#58AEFF] font-medium text-sm px-4 py-1 rounded-lg translate-y-1/8
                         border-blue-400 border-2"
+                        onClick={
+                            () => {
+                                void navigate(`/club/${club.name}`);
+                            }
+                        }
                     >
                         More
                     </button>
