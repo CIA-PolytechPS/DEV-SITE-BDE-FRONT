@@ -65,7 +65,7 @@
   }
 
   h1 {
-    @apply text-primary text-5xl font-semibold;
+    @apply text-primary text-5xl font-semibold tracking-tighter mb-2;
   }
 
   h2 {

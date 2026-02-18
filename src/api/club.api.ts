@@ -4,6 +4,7 @@ const CLUBS: Club[] = [
     {
         id            : 1,
         name          : "CIA",
+        short_name    : "cia",
         image_location: "/images/fillingPic.gif",
         description   : "Le CIA c'est génial et on fait plein de trucs cools donc venez !",
         board_members : "Maxime et Maxime et Maxime et Maxime",
@@ -34,6 +35,7 @@ const CLUBS: Club[] = [
     {
         id            : 2,
         name          : "BDE",
+        short_name    : "bde",
         image_location: "/images/fillingPic.gif",
         description   : "Le BDE c'est moins bien que le CIA mais c'est bien aussi !",
         board_members : "",
@@ -46,4 +48,10 @@ export async function getAllClubs(): Promise<Club[]> {
     await fetch("https://jsonplaceholder.typicode.com");
     
     return CLUBS.map(mapClub);
+}
+
+export async function getClubByShortName(short_name: string): Promise<Club | undefined> {
+    await fetch("https://jsonplaceholder.typicode.com");
+    
+    return CLUBS.map(mapClub).find((club) => { return club.short_name === short_name; });
 }

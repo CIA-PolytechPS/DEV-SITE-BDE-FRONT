@@ -6,6 +6,7 @@ import { Project, mapProject } from "@/shared/models/project.model";
 export interface Club {
     id            : number;
     name          : string;
+    short_name    : string;
     image_location: string;
     description   : string;
     board_members : string;
@@ -16,6 +17,7 @@ export interface Club {
 export const mapClub = createMapper<Club>({
     id            : createConverter(unknownToNumber, -1),
     name          : createConverter(unknownToString, ""),
+    short_name    : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
     image_location: createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
     description   : createConverter(unknownToString, ""),
     board_members : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
