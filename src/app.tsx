@@ -31,7 +31,7 @@ const App: FC = (): ReactNode => {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/club" element={<ClubPage />} />
                         <Route path="*" element={<NotFoundPage />} />
-                        <Route path="/clubs/:name" element={<DetailedClubPage />} />
+                        <Route path="/club/:name" element={<DetailedClubPage />} />
                     </Routes>
                 </Suspense>
             </main>
