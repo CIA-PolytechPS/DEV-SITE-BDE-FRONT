@@ -2,25 +2,25 @@ import { unknownToString, unknownToDate, unknownToNumber } from "@/shared/utils/
 import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
 
 export interface Event {
-    id          : number;
-    organisateur: string;
-    nom         : string;
-    photo       : string;
-    participants: number;
-    datedebut   : Date;
-    datefin     : Date;
-    lieu        : string;
-    description : string;
+    id            : number;
+    organisator   : string;
+    name          : string;
+    photo         : string;
+    nbparticipants: number;
+    startdate     : Date;
+    enddate       : Date;
+    place         : string;
+    description   : string;
 }
 
 export const mapEvents = createMapper<Event>({
-    id          : createConverter(unknownToNumber, 0),
-    organisateur: createConverter(unknownToString, ""),
-    nom         : createConverter(unknownToString, ""),
-    photo       : createConverter(unknownToString, ""),
-    participants: createConverter(unknownToNumber, 0),
-    datedebut   : createConverter(unknownToDate, new Date()),
-    datefin     : createConverter(unknownToDate, new Date()),
-    lieu        : createConverter(unknownToString, ""),
-    description : createConverter(unknownToString, ""),
+    id            : createConverter(unknownToNumber, 0),
+    organisator   : createConverter(unknownToString, ""),
+    name          : createConverter(unknownToString, ""),
+    photo         : createConverter(unknownToString, ""),
+    nbparticipants: createConverter(unknownToNumber, 0),
+    startdate     : createConverter(unknownToDate, new Date()),
+    enddate       : createConverter(unknownToDate, new Date()),
+    place         : createConverter(unknownToString, ""),
+    description   : createConverter(unknownToString, ""),
 });
