@@ -17,20 +17,21 @@ const EventCardComp: FC<EventCardProps> = (props: EventCardProps): ReactNode => 
     return (
         <>
             <div>
-                <h2>{props.event.nom}</h2>
-                <p>Organisé par: {props.event.organisateur}</p>
-                <p>Lieu: {props.event.lieu}</p>
+                <h2>{props.event.name}</h2>
+                <p>Organisé par: {props.event.organisator}</p>
+                <p>Lieu: {props.event.place}</p>
 
                 <p>
                     Catégories :
                     {props.event.event_categories_id.map((event_category_id) => {
                         return event_categories.current.find((cat) => { return cat.id === event_category_id; })?.name ?? "";
-                    })}
+                    }).join()}
                 </p>
 
-                <p>Participants: {props.event.participants}</p>
-                <p>Date de début: {props.event.datedebut.toLocaleDateString()}</p>
-                <p>Date de fin: {props.event.datefin.toLocaleDateString()}</p>
+
+                <p>Participants: {props.event.nbparticipants}</p>
+                <p>Date de début: {props.event.startdate.toLocaleDateString()}</p>
+                <p>Date de fin: {props.event.enddate.toLocaleDateString()}</p>
                 <ReactMarkdown>{props.event.description}</ReactMarkdown>
             </div>
 

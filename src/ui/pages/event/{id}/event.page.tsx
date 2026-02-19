@@ -41,11 +41,11 @@ const EventPage: FC = (): ReactNode => {
                 </div>
             </section>
 
-            <hr />
+            <div className="separator"> </div>
 
             <div className="pl-6 basis-2/3 flex flex-col items-start w-6/8 m-[2%]">
 
-                <h1 className="font-semibold text-4xl mb-2 text-[#0061BB]">{event.nom}</h1>
+                <h1 className="font-semibold text-4xl mb-2 text-[#0061BB]">{event.name}</h1>
 
                 <h3 className="font-semibold text-xl mb-2">
                     Catégories :
@@ -54,10 +54,12 @@ const EventPage: FC = (): ReactNode => {
                     })}
                 </h3>
 
-                <h3 className="font-semibold text-xl mb-2">Début : {event.datedebut.toLocaleString("fr-FR")} </h3>
-                <h3 className="font-semibold text-xl mb-2">Fin : {event.datefin.toLocaleString("fr-FR")} </h3>
-                <h3 className="font-semibold text-xl mb-2">Organisé par : {event.organisateur}</h3>
-                <h3 className="font-semibold text-xl mb-2">Location : {event.lieu}</h3>
+                <h3 className="font-semibold text-xl mb-2">
+                    Début : {event.startdate.toLocaleString("fr-FR")} Fin : {event.enddate.toLocaleString("fr-FR")}
+                </h3>
+                
+                <h3 className="font-semibold text-xl mb-2">Organisé par : {event.organisator}</h3>
+                <h3 className="font-semibold text-xl mb-2">Location : {event.place}</h3>
 
                 <div className="pt-4 w-9/10 item-center">
                     <ReactMarkdown children={event.description} />

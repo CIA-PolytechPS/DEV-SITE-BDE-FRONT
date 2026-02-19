@@ -4,13 +4,13 @@ import { createConverter, createMapper } from "@/shared/utils/common/mapper.util
 export interface Event {
     id                 : number;
     event_categories_id: number[];
-    organisateur       : string;
-    nom                : string;
+    organisator        : string;
+    name               : string;
     photo              : string;
-    participants       : number;
-    datedebut          : Date;
-    datefin            : Date;
-    lieu               : string;
+    nbparticipants     : number;
+    startdate          : Date;
+    enddate            : Date;
+    place              : string;
     description        : string;
 }
 
@@ -28,14 +28,14 @@ export const mapEvents = createMapper<Event>({
 
         return [];
     }, []),
-    organisateur: createConverter(unknownToString, ""),
-    nom         : createConverter(unknownToString, ""),
-    photo       : createConverter(unknownToString, ""),
-    participants: createConverter(unknownToNumber, 0),
-    datedebut   : createConverter(unknownToDate, new Date()),
-    datefin     : createConverter(unknownToDate, new Date()),
-    lieu        : createConverter(unknownToString, ""),
-    description : createConverter(unknownToString, ""),
+    organisator   : createConverter(unknownToString, ""),
+    name          : createConverter(unknownToString, ""),
+    photo         : createConverter(unknownToString, ""),
+    nbparticipants: createConverter(unknownToNumber, 0),
+    startdate     : createConverter(unknownToDate, new Date()),
+    enddate       : createConverter(unknownToDate, new Date()),
+    place         : createConverter(unknownToString, ""),
+    description   : createConverter(unknownToString, ""),
 });
 
 export const mapEventCategories = createMapper<EventCategory>({
