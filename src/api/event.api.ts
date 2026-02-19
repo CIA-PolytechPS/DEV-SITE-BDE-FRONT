@@ -1,4 +1,4 @@
-import { Event, mapEvents } from "@/shared/models/event.model";
+import { Event, mapEventCategories, mapEvents, EventCategory } from "@/shared/models/event.model";
 
 const EVENTS: Event[] = [
     // Replace this by the API call to gather all the clubs.
@@ -79,5 +79,11 @@ export async function getEvent(id: number): Promise<Event | null> {
     const data = EVENTS.map((event) => { return mapEvents(event); }).filter((event) => { return event.id == id; });
 
     return data[0] ?? null;
+}
+
+export async function getAllEventCategories(): Promise<EventCategory[]> {
+    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+
+    return EVENT_CATEGORIES.map(mapEventCategories);
 }
 

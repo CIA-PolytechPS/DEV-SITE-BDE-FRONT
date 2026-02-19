@@ -7,7 +7,8 @@ import "@/app.css";
 
 const HomePage     = lazy(() => { return import("@/ui/pages/home/home.page"); });
 const NotFoundPage = lazy(() => { return import("@/ui/pages/not_found.page"); });
-const EventPage = lazy(() => { return import("@/ui/pages/event/event.page"); });
+const EventPage = lazy(() => { return import("@/ui/pages/event/{id}/event.page"); });
+const EventsPage = lazy(() => { return import("@/ui/pages/event/events.page"); });
 
 const App: FC = (): ReactNode => {
     useEffect(() => {
@@ -28,6 +29,7 @@ const App: FC = (): ReactNode => {
                         <Route path="/" element={<HomePage />} />
                         <Route path="*" element={<NotFoundPage />} />
                         <Route path="event/:id" element={<EventPage />} />
+                        <Route path="event" element={<EventsPage />} />
                     </Routes>
                 </Suspense>
             </main>

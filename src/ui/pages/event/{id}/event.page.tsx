@@ -4,14 +4,17 @@ import { Event } from "@/shared/models/event.model";
 import { getEvent } from "@/api/event.api";
 import { CircularProgress } from "@mui/material";
 import ReactMarkdown from "react-markdown";
+import { useGeneralVars } from "@/shared/contexts/common/general.context";
 
 const EventPage: FC = (): ReactNode => {
+    const { event_categories } = useGeneralVars();
+
     useEffect(() => {
-        console.log("Loaded: MembersPage");
+        console.log("Loaded: EventPage");
     }, []);
 
     useEffect(() => {
-        console.log("Rendered: MembersPage");
+        console.log("Rendered: EventPage");
     });
 
     const param = useParams();
@@ -22,7 +25,7 @@ const EventPage: FC = (): ReactNode => {
     useEffect(() => {
         getEvent(id)
             .then(setevent)
-            .catch((error: unknown) => { alert("Can't retrieve Members list :" + String(error)); });
+            .catch((error: unknown) => { alert("Can't retrieve Events list :" + String(error)); });
     }, []);
 
     if (event === undefined) return <CircularProgress />;
@@ -42,11 +45,19 @@ const EventPage: FC = (): ReactNode => {
 
             <div className="pl-6 basis-2/3 flex flex-col items-start w-6/8 m-[2%]">
 
-                <h1 className="font-semibold text-4xl mb-2 text-[#0061BB]">{event.name}</h1>
-                <h3 className="font-semibold text-xl mb-2">Début : {event.startdate.toLocaleString("fr-FR")} </h3>
-                <h3 className="font-semibold text-xl mb-2">Fin : {event.enddate.toLocaleString("fr-FR")} </h3>
-                <h3 className="font-semibold text-xl mb-2">Organisé par : {event.organisator}</h3>
-                <h3 className="font-semibold text-xl mb-2">Location : {event.place}</h3>
+                <h1 className="font-semibold text-4xl mb-2 text-[#0061BB]">{event.nom}</h1>
+
+                <h3 className="font-semibold text-xl mb-2">
+                    Catégories :
+                    {event.event_categories_id.map((event_category_id) => {
+                        return event_categories.current.find((cat) => { return cat.id === event_category_id; })?.name ?? "";
+                    })}
+                </h3>
+
+                <h3 className="font-semibold text-xl mb-2">Début : {event.datedebut.toLocaleString("fr-FR")} </h3>
+                <h3 className="font-semibold text-xl mb-2">Fin : {event.datefin.toLocaleString("fr-FR")} </h3>
+                <h3 className="font-semibold text-xl mb-2">Organisé par : {event.organisateur}</h3>
+                <h3 className="font-semibold text-xl mb-2">Location : {event.lieu}</h3>
 
                 <div className="pt-4 w-9/10 item-center">
                     <ReactMarkdown children={event.description} />
