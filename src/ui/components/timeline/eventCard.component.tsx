@@ -1,11 +1,9 @@
 import { FC } from "react";
-import { Event } from "@/shared/models/event.model";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import GroupsIcon from "@mui/icons-material/Groups";
-import PlaceIcon from "@mui/icons-material/Place";
-import CalendarIcon from "@mui/icons-material/CalendarMonth";
 
-// import PersonIcon from "@mui/icons-material/Person";
+// import  { Link } from "react-router";
+import { Event } from "@/shared/models/event.model";
+import DisplayComp from "@/ui/components/timeline/renderline.component";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 interface EventCardProps {
     event: Event;
@@ -32,26 +30,13 @@ const MemberCardComp: FC<EventCardProps> = (props: EventCardProps) => {
                                 className="text-[30px] sm:text-[30px] lg:text-[25px] my-0 leading-none pt-1 ml-1"
                                 href={"/events/" + String(props.event.id)}
                             >
-                                {props.event.nom}
+                                {props.event.name}
                             </a>
+
                         </div>
 
                         <div className="flex inline-flex items-center my-0">
-                            <GroupsIcon />
-                            <h3 className="flex text-[20px] my-0 leading-none pt-1 ml-2 mr-4">{props.event.participants} participants</h3>
-                            <PlaceIcon />
-                            <h3 className="flex text-[20px] my-0 leading-none pt-1 ml-1 mr-4">{props.event.lieu}</h3>
-                            <CalendarIcon />
-                            
-                            <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1 ml-1 mr-4">
-                                {props.event.datedebut.toLocaleString("fr-FR")}
-                            </h3>
-                            
-                            <CalendarIcon />
-                            
-                            <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1 ml-1 mr-4">
-                                {props.event.datefin.toLocaleString("fr-FR")}
-                            </h3>
+                            <DisplayComp event={props.event} />
                         </div>
                     </div>
 
