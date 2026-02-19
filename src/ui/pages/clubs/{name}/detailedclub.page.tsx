@@ -55,7 +55,7 @@ const DetailedClubPage: FC = () => {
     return (
         <>
             <DetailedClubsSectionComp club={club} />
-            <div className="separator" />
+            <hr />
         </>
     );
 };

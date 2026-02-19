@@ -15,7 +15,7 @@ const ClubPage: FC = (): ReactNode => {
     return (
         <>
             <ClubsSectionComp />
-            <div className="separator" />
+            <hr />
             <ClubsListComp />
         </>
     );
