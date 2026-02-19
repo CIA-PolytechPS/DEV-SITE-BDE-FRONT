@@ -3,12 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import LoadingComp from "@/ui/components/common/loading.component";
 import NavbarComp from "@/ui/components/navbar/navbar.component";
 import InfobarComp from "@/ui/components/infobar/infobar.component";
+import "@fontsource/inter";
 import "@/app.css";
 
 const HomePage     = lazy(() => { return import("@/ui/pages/home/home.page"); });
 const NotFoundPage = lazy(() => { return import("@/ui/pages/not_found.page"); });
 const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
-
+const MembersPage  = lazy(() => { return import("@/ui/pages/members/members.page"); });
+const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
 
 const App: FC = (): ReactNode => {
     useEffect(() => {
@@ -27,6 +29,10 @@ const App: FC = (): ReactNode => {
                 <Suspense fallback={<LoadingComp size={150} />}>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/club" element={<ClubPage />} />
+                        <Route path="/members" element={<MembersPage />} />
+                        <Route path="/club" element={<ClubPage />} />
+                        <Route path="/members" element={<MembersPage />} />
                         <Route path="/club" element={<ClubPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
