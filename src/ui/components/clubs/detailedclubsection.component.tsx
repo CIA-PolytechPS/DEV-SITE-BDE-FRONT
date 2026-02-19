@@ -12,7 +12,6 @@ const DetailedClubsSectionComp: FC<DetailedClubSectionProp> = ({ club }: Detaile
             <div className="max-w-6xl mx-auto grid grid-cols-[35%_65%] gap-10 items-start">
                 <div className="">
                     <img className="rounded-full" src={club.image_location} alt="Ceci est une image." />
-                    <p className="text-text-muted">Source : Hello World</p>
                 </div>
 
                 <div className="text-lg">
