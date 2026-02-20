@@ -10,7 +10,6 @@ const HomePage     = lazy(() => { return import("@/ui/pages/home/home.page"); })
 const NotFoundPage = lazy(() => { return import("@/ui/pages/not_found.page"); });
 const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
 const MembersPage  = lazy(() => { return import("@/ui/pages/members/members.page"); });
-const ClubPage     = lazy(() => { return import("@/ui/pages/clubs/clubs.page"); });
 
 const App: FC = (): ReactNode => {
     useEffect(() => {
@@ -31,9 +30,6 @@ const App: FC = (): ReactNode => {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/club" element={<ClubPage />} />
                         <Route path="/members" element={<MembersPage />} />
-                        <Route path="/club" element={<ClubPage />} />
-                        <Route path="/members" element={<MembersPage />} />
-                        <Route path="/club" element={<ClubPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                         <Route path="/club/:name" element={<DetailedClubPage />} />
                     </Routes>
