@@ -56,8 +56,7 @@
   /* Global styles */
   * {
     box-sizing: border-box;
-    font-family: 'Inter',sans-serif;
-}
+  }
 
   body {
     @apply w-screen h-screen overflow-hidden m-0 p-0 -z-0 font-sans;
@@ -74,7 +73,7 @@
   }
 
   button {
-    @apply bg-accent text-black;
+    @apply bg-accent text-black border border-black/20 font-medium text-sm rounded-lg px-4 py-1.5;
     @apply transition-all duration-200; 
   }
 
