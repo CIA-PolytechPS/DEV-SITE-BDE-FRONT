@@ -1,14 +1,12 @@
 import { FC } from "react";
 import { Club } from "@/shared/models/club.model";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface ClubCardProp {
     club: Club;
 }
 
 const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
-    const navigate = useNavigate();
-
     return (
         <div
             className="
@@ -27,16 +25,9 @@ const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
                 <div className="flex justify-between items-start my-0">
                     <h2 className="text-[35px] my-0 leading-none">{props.club.name}</h2>
 
-                    <button
-                        className="translate-y-1/80"
-                        onClick={
-                            () => {
-                                void navigate(`/club/${props.club.short_name}`);
-                            }
-                        }
-                    >
-                        More
-                    </button>
+                    <Link to={`/club/${props.club.short_name}`} className="translate-y-1/80">
+                        <button> More </button>
+                    </Link>
                 </div>
 
                 <p className="mt-2 text-lg leading-relaxed">{props.club.description}</p>

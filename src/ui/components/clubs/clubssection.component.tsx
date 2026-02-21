@@ -4,9 +4,7 @@ const ClubsSectionComp: FC = (): ReactNode => {
     return (
         <section className="py-16 px-8 bg-secondary w-screen relative left-1/2 -translate-x-1/2">
             <div className="max-w-6xl mx-auto grid grid-cols-[35%_65%] gap-10 items-start">
-                <div className="">
-                    <img className="rounded-2xl" src="/images/fillingPic.gif" alt="Ceci est une image." />
-                </div>
+                <img className="rounded-2xl" src="/images/fillingPic.gif" alt="Ceci est une image." />
 
                 <div className="text-lg">
                     <h1 className="font-semibold text-5xl tracking-tighter mb-2">Les Clubs du BDE</h1>
