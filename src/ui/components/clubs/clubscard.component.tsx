@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { Club } from "@/shared/models/club.model";
+import { Link } from "react-router-dom";
 
 interface ClubCardProp {
     club: Club;
 }
 
-const ClubCardComp: FC<ClubCardProp> = ({ club }: ClubCardProp) => {
+const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
     return (
         <div
             className="
@@ -17,21 +18,19 @@ const ClubCardComp: FC<ClubCardProp> = ({ club }: ClubCardProp) => {
             "
         >
             <div className="flex-shrink-0 w-64 h-64 overflow-hidden rounded-full">
-                <img src={club.image_location} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
+                <img src={props.club.image_location} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
             </div>
 
             <div className="flex flex-col grow-1 justify-between ml-5">
                 <div className="flex justify-between items-start my-0">
-                    <h2 className="text-[35px] my-0 leading-none">{club.name}</h2>
+                    <h2 className="text-[35px] my-0 leading-none">{props.club.name}</h2>
 
-                    <button
-                        className="translate-y-1/80"
-                    >
-                        More
-                    </button>
+                    <Link to={`/club/${props.club.short_name}`} className="translate-y-1/80">
+                        <button> More </button>
+                    </Link>
                 </div>
 
-                <p className="mt-2 text-lg leading-relaxed">{club.description}</p>
+                <p className="mt-2 text-lg leading-relaxed">{props.club.description}</p>
             </div>
         </div>
     );

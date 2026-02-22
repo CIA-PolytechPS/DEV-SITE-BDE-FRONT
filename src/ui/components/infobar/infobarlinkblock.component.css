@@ -29,7 +29,7 @@ li {
     list-style: none;
 }
 
-a {
+.infobar-link-block-item > a {
     color: #202020;
     text-decoration: none;
     position: relative;
