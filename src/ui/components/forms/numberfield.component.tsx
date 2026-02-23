@@ -1,16 +1,20 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, ChangeEventHandler } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import "@/ui/components/forms/textfield.component.css";
 
 interface NumberFieldCompProps {
+    id?           : string;
     text          : string;
+    name?         : string;
+    value?        : number;
     default_value?: string;
     icon?         : IconDefinition;
+    onChange?     : ChangeEventHandler<HTMLInputElement>;
 }
 
-const NumberFieldComp: FC<NumberFieldCompProps> = ({ text, default_value = "", icon = faHashtag }) => {
+const NumberFieldComp: FC<NumberFieldCompProps> = ({ id = "", text, value = 0, default_value = "", icon = faHashtag, onChange, name = "" }) => {
     useEffect(() => {
         console.log("Loaded: InfobarComp");
     }, []);
@@ -23,11 +27,19 @@ const NumberFieldComp: FC<NumberFieldCompProps> = ({ text, default_value = "", i
         <div className="form-field form-field-number">
             <FontAwesomeIcon icon={icon} />
 
-            <label>
+            <label htmlFor={id}>
                 {text}
             </label>
 
-            <input name="myInput" defaultValue={default_value} type="number" min="0" />
+            <input
+                id={id}
+                name={name}
+                value={value}
+                defaultValue={default_value}
+                type="number"
+                min="0"
+                onChange={onChange}
+            />
         </div>
     );
 };

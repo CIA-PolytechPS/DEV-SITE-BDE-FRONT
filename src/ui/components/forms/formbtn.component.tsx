@@ -5,13 +5,19 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 import "@/ui/components/forms/formbtn.component.css";
 
 interface FormBtnCompProps {
-    text : string;
-    icon?: IconDefinition;
+    text         : string;
+    icon?        : IconDefinition;
+    btn_disabled?: boolean;
+    btnOnClick?  : () => void;
 }
 
-const FormBtnComp: FC<FormBtnCompProps> = ({ text, icon = faFile }) => {
+const FormBtnComp: FC<FormBtnCompProps> = ({ text, icon = faFile, btn_disabled = false, btnOnClick }) => {
     return (
-        <button>
+        <button
+            type="button"
+            disabled={btn_disabled}
+            onClick={btnOnClick}
+        >
             <FontAwesomeIcon icon={icon} />
             <text>{text}</text>
         </button>

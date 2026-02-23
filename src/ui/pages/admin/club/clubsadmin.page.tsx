@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect } from "react";
-import EventEdit from "@/ui/components/admin/eventedit.component";
 import ClubSectionEdit from "@/ui/components/admin/clubsectionedit.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
 import FormBtnComp from "@/ui/components/forms/formbtn.component";
@@ -55,7 +54,8 @@ const EventsAdminPage: FC = (): ReactNode => {
             </div>
             
             <HorizontalSeparatorComp />
-            <EventEdit />
+
+            {/* <EventEdit /> */}
 
             <h3>
                 <FontAwesomeIcon icon={faHashtag} /> Event Preview

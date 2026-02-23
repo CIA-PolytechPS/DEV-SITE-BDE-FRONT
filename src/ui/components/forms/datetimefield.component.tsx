@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
-import { dateToInputFormat } from "@/shared/utils/common/date.utils";
+import { dateToDatetimeLocalString } from "@/shared/utils/common/date.utils";
 
 import "@/ui/components/forms/textfield.component.css";
 
-interface DateFieldCompProps {
+interface DatetimeFieldCompProps {
     id           : string;
     name         : string;
     text         : string;
@@ -16,13 +16,13 @@ interface DateFieldCompProps {
     onValueChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const DateFieldComp: FC<DateFieldCompProps> = ({ id, name, text, value = new Date(), icon = faCalendar, onValueChange }) => {
+const DatetimeFieldComp: FC<DatetimeFieldCompProps> = ({ id, name, text, value = new Date(), icon = faCalendar, onValueChange }) => {
     useEffect(() => {
-        console.log("Loaded: InfobarComp");
+        console.log("Loaded: DatetimeFieldComp");
     }, []);
 
     useEffect(() => {
-        console.log("Rendered: InfobarComp");
+        console.log("Rendered: DatetimeFieldComp");
     });
 
     return (
@@ -37,13 +37,21 @@ const DateFieldComp: FC<DateFieldCompProps> = ({ id, name, text, value = new Dat
                 id={id}
                 name={name}
                 value={
-                    dateToInputFormat(value)
+                    dateToDatetimeLocalString(value)
                 }
-                type="date"
+                type="datetime-local"
                 onChange={onValueChange}
+
+                /*
+                 * onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                 *     const { value } = e.target;
+                 *     console.log("test", value)
+                 * }}
+                 * onBlur={onValueChange}
+                 */
             />
         </div>
     );
 };
 
-export default DateFieldComp;
+export default DatetimeFieldComp;
