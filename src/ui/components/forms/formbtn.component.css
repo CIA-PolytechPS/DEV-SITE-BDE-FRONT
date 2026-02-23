@@ -8,6 +8,7 @@
 
 .event-form button > text {
     margin-left: 6px;
+    color: var(--text-color-inver)
 }
 
 .event-form button {

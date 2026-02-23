@@ -27,7 +27,7 @@ const NumberFieldComp: FC<NumberFieldCompProps> = ({ text, default_value = "", i
                 {text}
             </label>
 
-            <input name="myInput" defaultValue={default_value} type="number" />
+            <input name="myInput" defaultValue={default_value} type="number" min="0" />
         </div>
     );
 };

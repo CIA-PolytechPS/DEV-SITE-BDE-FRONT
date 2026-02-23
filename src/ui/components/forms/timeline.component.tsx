@@ -1,42 +1,60 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState, MouseEvent } from "react";
 import "@/ui/components/forms/timeline.component.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListUl } from "@fortawesome/free-solid-svg-icons";
+import { faListUl, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
-const TimeFieldComp: FC = () => {
+interface FormBtnCompProps {
+    default_value?   : string;
+    values?          : string[];
+    valueChangeEvent?: (event: MouseEvent, value: string) => void;
+}
+
+const TimelineComp: FC<FormBtnCompProps> = ({ default_value = "", values = [], valueChangeEvent }) => {
+    const [current_value, setCurrentValue] = useState<string>(default_value);
+
     useEffect(() => {
-        console.log("Loaded: TimelineComp");
+        console.log("Loaded: TimelineComp : ", current_value);
     }, []);
 
     useEffect(() => {
-        console.log("Rendered: TimelineComp");
+        console.log("Rendered: TimelineComp : ", current_value);
     });
+    
+    useEffect(() => {
+        console.log("New Event Select : ", current_value);
+    }, [current_value]);
 
     return (
         <div className="form-timeline-comp">
             <h3><FontAwesomeIcon icon={faListUl} /> Events List</h3>
 
             <div className="form-timeline">
-                <div className="form-timeline-container">
-                    <div className="form-timeline-content right">
-                        <p>Weekend d'intégration</p>
-                    </div>
-                </div>
+                {
+                    values.map((event_name) => {
+                        return (
+                            <button
+                                className="form-timeline-container"
+                                onClick={(event) => {
+                                    setCurrentValue(event_name);
+                                    valueChangeEvent?.(event, event_name);
+                                }}
+                            >
+                                <div className="form-timeline-content right">
+                                    <p style={event_name == current_value ? { color: "#222222", fontWeight: "bold" } : {}}>{event_name}</p>
+                                </div>
+                            </button>
+                        );
+                    })
+                }
 
-                <div className="form-timeline-container">
+                <button className="form-timeline-container form-timeline-button-add">
                     <div className="form-timeline-content right">
-                        <p>Porte Ouverte</p>
+                        <p><FontAwesomeIcon icon={faCirclePlus} /> New</p>
                     </div>
-                </div>
-
-                <div className="form-timeline-container">
-                    <div className="form-timeline-content right">
-                        <p>Première journée de ...</p>
-                    </div>
-                </div>
+                </button>
             </div>
         </div>
     );
 };
 
-export default TimeFieldComp;
+export default TimelineComp;

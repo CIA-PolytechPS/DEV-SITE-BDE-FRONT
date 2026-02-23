@@ -1,10 +1,20 @@
-import { FC, ReactNode, useEffect } from "react";
-import EventForm from "@/ui/components/admin/eventform.component";
-import EventPageForm from "@/ui/components/admin/eventpageform.component";
-import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons";
+import { FC, ReactNode, useEffect, Suspense, lazy } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import LoadingComp from "@/ui/components/common/loading.component";
+
 import "@/ui/pages/admin/admin.page.css";
+import "@/ui/components/admin/eventedit.component.css";
+
+const EventsAdminPage = lazy(() => { return import("@/ui/pages/admin/event/eventsadmin.page"); });
+const ClubsAdminPage = lazy(() => { return import("@/ui/pages/admin/club/clubsadmin.page"); });
+
+const ContentAdminComp: FC = (): ReactNode => {
+    return (
+        <>
+            <h2>Page Not Found !</h2>
+        </>
+    );
+};
 
 const AdminPage: FC = (): ReactNode => {
     useEffect(() => {
@@ -16,36 +26,24 @@ const AdminPage: FC = (): ReactNode => {
     });
 
     return (
-        <div className="event-modification-page">
+        <div className="admin-page clubs-modification-page">
+            <ul className="admin-page-topbars">
+                <li>
+                    <Link to="/admin/event">Events</Link>
+                </li>
+
+                <li>
+                    <Link to="/admin/club">Clubs</Link>
+                </li>
+            </ul>
             
-            <h2>Events Modication Page (Admin Page)</h2>
-
-            <text>
-                <p>Select an event either from the list on the left or from the “Selected Event” section. </p>
-
-                <p>
-                    Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
-                    fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
-                </p>
-
-                <p>
-                    Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
-                    consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
-                    eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
-                    plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
-                    Mediolanum ad hiberna discessit.
-                </p>
-            </text>
-
-            <HorizontalSeparatorComp />
-            <EventForm />
-
-            <h3>
-                <FontAwesomeIcon icon={faHashtag} /> Event Preview
-            </h3>
-
-            <HorizontalSeparatorComp />
-            <EventPageForm />
+            <Suspense fallback={<LoadingComp size={150} />}>
+                <Routes>
+                    <Route path="/" element={<ContentAdminComp />} />
+                    <Route path="event" element={<EventsAdminPage />} />
+                    <Route path="club" element={<ClubsAdminPage />} />
+                </Routes>
+            </Suspense>
         </div>
     );
 };

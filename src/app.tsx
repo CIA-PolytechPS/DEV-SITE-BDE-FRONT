@@ -27,7 +27,7 @@ const App: FC = (): ReactNode => {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="*" element={<NotFoundPage />} />
-                        <Route path="/admin" element={<AdminPage />} />
+                        <Route path="/admin/*" element={<AdminPage />} />
                     </Routes>
                 </Suspense>
             </main>

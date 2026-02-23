@@ -1,7 +1,7 @@
 
 
 
-.event-form label {
+.event-form label, .event-form text {
     font-weight: bold;
     color: var(--text-color-brand);
 }
@@ -10,7 +10,7 @@
     color: var(--text-color-brand);
 }
 
-.event-form input[type=text], .event-form input[type=date], .event-form input[type=time], .event-form input[type=number], .event-form textarea{
+.event-form input[type=text], .event-form input[type=date], .event-form input[type=time], .event-form input[type=number], .event-form textarea, .event-form select{
     width: 100%;
     padding: 4px;
     margin: 2px 0;

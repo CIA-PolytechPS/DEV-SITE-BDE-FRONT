@@ -4,7 +4,7 @@ import MultiLineTextFieldComp from "@/ui/components/forms/multilinefield.compone
 import VerticalSeparatorComp from "@/ui/components/forms/verticalseparator.component";
 import { faPencil, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import "@/ui/components/admin/eventpageform.component.css";
+import "@/ui/components/admin/eventpageedit.component.css";
 
 const EventFormComp: FC = (): ReactNode => {
     useEffect(() => {

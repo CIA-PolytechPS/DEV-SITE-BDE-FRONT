@@ -20,7 +20,9 @@
   top: 0;
   bottom: 0;
   margin-left: -3px;
-  left: 10%
+  left: 10%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Container around content */
@@ -31,6 +33,38 @@
   width: 90%;
   left: 10%;
   width: fit-content;
+}
+
+/* Disable button box-shadow */
+.form-timeline .form-timeline-container{
+  box-shadow: none;
+}
+.form-timeline .form-timeline-container:hover{
+  box-shadow: none;
+}
+
+/* Exception for the button add */
+.form-timeline .form-timeline-button-add .form-timeline-content{
+    /* padding: 4px; */
+
+    font-weight: bold;
+    border: white 2px solid;
+
+    color: var(--text-color-invert);
+    background-color: var(--text-color-brand);
+
+    box-shadow: rgba(0, 0, 0, 0.507) 1px 0px 4px 0px;
+}
+
+.form-timeline .form-timeline-button-add .form-timeline-content:hover{
+    background-color: var(--surface-color-invert);
+    border-color: var(--text-color-brand);
+    box-shadow: rgba(1, 1, 1, 0.507) 1px 0px 4px 0px;
+}
+
+/* Exception Arrow */
+.form-timeline .form-timeline-button-add .right::before {
+  border-color: transparent var(--text-color-brand) transparent transparent;
 }
 
 /* The circles on the timeline */
