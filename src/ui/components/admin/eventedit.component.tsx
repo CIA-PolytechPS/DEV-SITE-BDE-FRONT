@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState, MouseEvent } from "react";
+import { FC, ReactNode, useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import { datetimeLocalStringToDate } from "@/shared/utils/common/date.utils";
 
 // Custom Components //
@@ -13,12 +13,13 @@ import Timeline from "@/ui/components/forms/timeline.component";
 import BoxDownFieldComp from "@/ui/components/forms/boxdownfield.component";
 
 // Icons //
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClone, faTrash, faLocationDot, faUsers, faImage, faCircleXmark, faCircleCheck, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
 // API //
-import { Event } from "@/shared/models/event.model";
+import { Event, EventCategory } from "@/shared/models/event.model";
 
-// import { useGeneralVars } from "@/shared/contexts/common/general.context";
+import { useGeneralVars } from "@/shared/contexts/common/general.context";
 
 // CSS //
 import "@/ui/components/admin/eventedit.component.css";
@@ -34,7 +35,7 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
     const [is_loading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    // const { event_categories } = useGeneralVars();
+    const { event_categories } = useGeneralVars();
 
     useEffect(() => {
         console.log("Rendered: Event Form Component");
@@ -236,8 +237,48 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
 
                         <BoxDownFieldComp
                             text="Event Cathegories"
-                            values={[]}
+                            values={event_categories.current.map((cat: EventCategory) => { return cat.name; })}
+                            valueChangeEvent={(e: ChangeEvent<HTMLSelectElement>) => {
+                                const cat = event_categories.current.find((c) => { return c.name === e.target.value; });
+
+                                if (cat) {
+                                    const already_selected = form_data.event_categories_id.includes(cat.id);
+
+                                    if (!already_selected) {
+                                        setFormData({
+                                            ...form_data,
+                                            ["event_categories_id"]: [...form_data.event_categories_id, cat.id],
+                                        });
+                                    }
+                                }
+                            }}
                         />
+
+                        <div>
+                            {form_data.event_categories_id.map((cat_id) => {
+                                const cat = event_categories.current.find((c) => { return c.id === cat_id; });
+
+                                const removeCategory = (cat_id: number) => {
+                                    setFormData({
+                                        ...form_data,
+                                        event_categories_id: form_data.event_categories_id.filter((id) => { return id !== cat_id; }),
+                                    });
+                                };
+
+                                return (
+                                    <span key={cat_id} className="event-category-tag">
+                                        {cat ? cat.name : "Unknown Category"}
+
+                                        <button
+                                            className="event-category-delete-btn"
+                                            onClick={() => { removeCategory(cat_id); }}
+                                        >
+                                            <FontAwesomeIcon icon={faCircleXmark} />
+                                        </button>
+                                    </span>
+                                );
+                            })}
+                        </div>
 
                         <TextFieldComp
                             id="image"
