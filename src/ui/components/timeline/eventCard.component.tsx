@@ -1,6 +1,4 @@
 import { FC } from "react";
-
-// import  { Link } from "react-router";
 import { Event } from "@/shared/models/event.model";
 import DisplayComp from "@/ui/components/timeline/renderline.component";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -41,7 +39,7 @@ const MemberCardComp: FC<EventCardProps> = (props: EventCardProps) => {
                     </div>
 
                     <div className="inline-flex flex-1 justify-between my-0 pt-2">
-                        <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1">{props.event.description}</h3>
+                        <h3 className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1">{props.event.smalldescription}</h3>
                     </div>
                 </div>
             </li>

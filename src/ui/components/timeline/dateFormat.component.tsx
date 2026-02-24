@@ -1,6 +1,4 @@
 import { FC, ReactNode, useEffect } from "react";
-
-// import { Event } from "@/shared/models/event.model";
 import CalendarIcon from "@mui/icons-material/CalendarMonth";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 
@@ -14,20 +12,11 @@ export function sameDate(startdate : Date, enddate : Date): boolean {
 }
 
 const formatConverter: FC<{ startdate: Date; enddate: Date }> = ({ startdate, enddate }): ReactNode => {
-    /*
-     * const start = new Date(event.startdate);
-     * const end = new Date(event.enddate);
-     */
     useEffect(() => {
         console.log("used formatConverter");
     });
 
     if (sameDate(startdate, enddate)) {
-        /*
-         *const format: Intl.DateTimeFormatOptions = { day: "2-digit", month: "2-digit", year: "numeric" };
-         *const startStr = start.toLocaleDateString("fr-FR", format);
-         *const endStr = end.toLocaleDateString("fr-FR", format);
-         */
         return (
             <div>
                 <div className="text-[15px] sm:text-[20px] text-gray-700 my-0 leading-none pl-1 ml-0 mr-4">
