@@ -6,7 +6,7 @@ import { useGeneralVars } from "@/shared/contexts/common/general.context";
 import { useReRender } from "@/shared/utils/common/hook.util";
 import "@/ui/components/navbar/navbar.component.css";
 
-const ProjectCardComp: FC = () => {
+const NavbarComp: FC = () => {
     const navigate = useNavigate();
     const { navbar_title } = useGeneralVars();
     const reRender = useReRender();
@@ -39,4 +39,4 @@ const ProjectCardComp: FC = () => {
     );
 };
 
-export default ProjectCardComp;
+export default NavbarComp;
