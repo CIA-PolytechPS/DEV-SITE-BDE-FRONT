@@ -9,7 +9,6 @@ export interface Member {
 }
 
 export const mapMember = createMapper<Member>({
-
     nom     : createConverter(unknownToString, ""),
     photo   : createConverter(unknownToString, ""),
     fonction: createConverter(unknownToString, ""),
