@@ -73,7 +73,7 @@
   }
 
   button {
-    @apply bg-accent text-black border border-black/20 font-medium text-sm rounded-lg px-4 py-1.5;
+    @apply bg-primary text-white border border-black/20 font-medium text-sm rounded-lg px-4 py-1.5;
     @apply transition-all duration-200; 
   }
 

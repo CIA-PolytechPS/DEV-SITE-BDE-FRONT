@@ -2,13 +2,17 @@ import { Club, mapClub } from "@/shared/models/club.model";
 
 const CLUBS: Club[] = [
     {
-        id            : 1,
-        name          : "CIA",
-        short_name    : "cia",
-        image_location: "/images/fillingPic.gif",
-        description   : "Le CIA c'est génial et on fait plein de trucs cools donc venez !",
-        board_members : "Maxime et Maxime et Maxime et Maxime",
-        events        : [
+        id           : 1,
+        name         : "CIA",
+        short_name   : "cia",
+        location     : "B007",
+        logo_url     : "/images/fillingPic.gif",
+        banner_url   : "/images/fillingPic.gif",
+        color        : "#ff0000",
+        alpha        : 0.5,
+        description  : "Le CIA c'est génial et on fait plein de trucs cools donc venez !",
+        board_members: "Maxime et Maxime et Maxime et Maxime",
+        events       : [
             {
                 id            : 1,
                 club_id       : 1,
