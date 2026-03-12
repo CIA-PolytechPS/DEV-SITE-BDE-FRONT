@@ -1,14 +1,14 @@
 import { ChangeEvent, FC, ReactNode } from "react";
-import TextFieldComp from "@/ui/components/forms/textfield.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multilinefield.component";
-import FormBtnComp from "@/ui/components/forms/formbtn.component";
-import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
-import VerticalSeparatorComp from "@/ui/components/forms/verticalseparator.component";
-import BoxDownFieldComp from "@/ui/components/forms/boxdownfield.component";
+import TextFieldComp from "@/ui/components/forms/text_field.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import FormBtnComp from "@/ui/components/forms/form_btn.component";
+import HorizontalSeparatorComp from "@/ui/components/forms/horizontal_separator.component";
+import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
+import BoxDownFieldComp from "@/ui/components/forms/boxdown_field.component";
 import Timeline from "@/ui/components/forms/timeline.component";
 import { faClone, faTrash, faImage, faCircleXmark, faCircleCheck, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
-import "@/ui/components/admin/eventedit.component.css";
+import "@/ui/components/admin/event_edit.component.css";
 
 const ClubSectionFormComp: FC = (): ReactNode => {
     return (

@@ -5,7 +5,7 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 import { dateToDatetimeLocalString } from "@/shared/utils/common/date.utils";
 
-import "@/ui/components/forms/textfield.component.css";
+import "@/ui/components/forms/fields_styles.component.css";
 
 interface DatetimeFieldCompProps {
     id           : string;

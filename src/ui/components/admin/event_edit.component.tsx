@@ -2,16 +2,16 @@ import { FC, ReactNode, useEffect, useState, MouseEvent, ChangeEvent } from "rea
 import { datetimeLocalStringToDate } from "@/shared/utils/common/date.utils";
 
 // Custom Components //
-import TextFieldComp from "@/ui/components/forms/textfield.component";
-import DatetimeFieldComp from "@/ui/components/forms/datetimefield.component";
-import NumberFieldComp from "@/ui/components/forms/numberfield.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multilinefield.component";
-import FormBtnComp from "@/ui/components/forms/formbtn.component";
-import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
-import VerticalSeparatorComp from "@/ui/components/forms/verticalseparator.component";
+import TextFieldComp from "@/ui/components/forms/text_field.component";
+import DatetimeFieldComp from "@/ui/components/forms/datetime_field.component";
+import NumberFieldComp from "@/ui/components/forms/number_field.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import FormBtnComp from "@/ui/components/forms/form_btn.component";
+import HorizontalSeparatorComp from "@/ui/components/forms/horizontal_separator.component";
+import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
 import Timeline from "@/ui/components/forms/timeline.component";
-import BoxDownFieldComp from "@/ui/components/forms/boxdownfield.component";
-import EventPageForm from "@/ui/components/admin/eventpageedit.component";
+import BoxDownFieldComp from "@/ui/components/forms/boxdown_field.component";
+import EventPageForm from "@/ui/components/admin/event_page_edit.component";
 
 // Icons //
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,7 +24,7 @@ import { Event, EventCategory } from "@/shared/models/event.model";
 import { useGeneralVars } from "@/shared/contexts/common/general.context";
 
 // CSS //
-import "@/ui/components/admin/eventedit.component.css";
+import "@/ui/components/admin/event_edit.component.css";
 
 interface EventFormEditorProps {
     events: Event[];
@@ -57,9 +57,11 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
                 setError(null);
 
                 // Manuly set the datetime-local input value to avoid issues of rerender not needed
-                const start_datetime_value = selected.startdate ? new Date(selected.startdate).toISOString().slice(0, 16) : "";
+                const start_datetime_value = new Date(selected.startdate).toISOString()
+                    .slice(0, 16);
                 setStartFieldDateValue(start_datetime_value);
-                const end_datetime_value = selected.enddate ? new Date(selected.enddate).toISOString().slice(0, 16) : "";
+                const end_datetime_value = new Date(selected.enddate).toISOString()
+                    .slice(0, 16);
                 setEndFieldDateValue(end_datetime_value);
             }
         }
@@ -221,8 +223,9 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
                                     onValueChange={(e) => { setEndFieldDateValue(e.target.value); handleDatetimeInputChange(e); }}
                                 />
                             </div>
+
                             <p>
-                                {"=>"} {form_data?.startdate.toString()} to {form_data?.enddate.toString()}
+                                {"=>"} {form_data.startdate.toString()} {"<->"} {form_data.enddate.toString()}
                             </p>
 
                             <div className="col2">

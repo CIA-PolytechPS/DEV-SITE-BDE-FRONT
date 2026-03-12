@@ -1,11 +1,11 @@
 import { FC, ReactNode, ChangeEvent, ChangeEventHandler } from "react";
-import FormBtnComp from "@/ui/components/forms/formbtn.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multilinefield.component";
-import VerticalSeparatorComp from "@/ui/components/forms/verticalseparator.component";
+import FormBtnComp from "@/ui/components/forms/form_btn.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
 
 import { faPencil, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import "@/ui/components/admin/eventpageedit.component.css";
+import "@/ui/components/admin/event_page_edit.component.css";
 
 interface EventPageFormCompProps {
     id?          : string;

@@ -2,7 +2,7 @@ import { FC, ChangeEventHandler } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
-import "@/ui/components/forms/textfield.component.css";
+import "@/ui/components/forms/fields_styles.component.css";
 
 interface NumberFieldCompProps {
     id?           : string;

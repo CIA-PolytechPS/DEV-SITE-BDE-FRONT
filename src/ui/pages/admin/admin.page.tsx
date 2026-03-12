@@ -3,10 +3,10 @@ import { Routes, Route, Link } from "react-router-dom";
 import LoadingComp from "@/ui/components/common/loading.component";
 
 import "@/ui/pages/admin/admin.page.css";
-import "@/ui/components/admin/eventedit.component.css";
+import "@/ui/components/admin/event_edit.component.css";
 
-const EventsAdminPage = lazy(() => { return import("@/ui/pages/admin/event/eventsadmin.page"); });
-const ClubsAdminPage = lazy(() => { return import("@/ui/pages/admin/club/clubsadmin.page"); });
+const EventsAdminPage = lazy(() => { return import("@/ui/pages/admin/event/events_admin.page"); });
+const ClubsAdminPage = lazy(() => { return import("@/ui/pages/admin/club/clubs_admin.page"); });
 
 const ContentAdminComp: FC = (): ReactNode => {
     return (

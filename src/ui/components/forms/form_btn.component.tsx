@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
-import "@/ui/components/forms/formbtn.component.css";
+import "@/ui/components/forms/form_btn.component.css";
 
 interface FormBtnCompProps {
     text         : string;
