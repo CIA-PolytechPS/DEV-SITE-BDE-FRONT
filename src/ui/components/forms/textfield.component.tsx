@@ -1,4 +1,4 @@
-import { FC, useEffect, ChangeEventHandler } from "react";
+import { FC, ChangeEventHandler } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
@@ -18,14 +18,6 @@ interface TextFieldCompProps {
 const TextFieldComp: FC<TextFieldCompProps> = (
     { id = "", name = "", text, value = "", default_value = "", icon = faFile, placeholder = "", onValueChange },
 ) => {
-    useEffect(() => {
-        console.log("Loaded: InfobarComp");
-    }, []);
-
-    useEffect(() => {
-        console.log("Rendered: InfobarComp");
-    });
-
     return (
         <div className="form-field">
             <FontAwesomeIcon icon={icon} />

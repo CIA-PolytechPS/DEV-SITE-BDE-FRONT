@@ -1,9 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from "react";
 import EventForm from "@/ui/components/admin/eventedit.component";
-import EventPageForm from "@/ui/components/admin/eventpageedit.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 
 import { getListEvents } from "@/api/event.api";
 import { Event } from "@/shared/models/event.model";
@@ -14,16 +11,10 @@ const EventsAdminPage: FC = (): ReactNode => {
     const [events, setEvents] = useState<Event[] | undefined>(undefined);
 
     useEffect(() => {
-        console.log("Loaded: Admin Page");
-
         getListEvents()
             .then(setEvents)
             .catch((error: unknown) => { alert("Can't retrieve Events list :" + String(error)); });
     }, []);
-
-    useEffect(() => {
-        console.log("Rendered: Admin Page");
-    });
 
     return (
         <div className="event-modification-page">
@@ -56,13 +47,6 @@ const EventsAdminPage: FC = (): ReactNode => {
                     await Promise.resolve();
                 }}
             />
-
-            <h3>
-                <FontAwesomeIcon icon={faHashtag} /> Event Preview
-            </h3>
-
-            <HorizontalSeparatorComp />
-            <EventPageForm />
         </div>
     );
 };

@@ -1,4 +1,5 @@
-import { FC, ReactNode, useEffect } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
+import EventEditForm from "@/ui/components/admin/eventedit.component";
 import ClubSectionEdit from "@/ui/components/admin/clubsectionedit.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontalseparator.component";
 import FormBtnComp from "@/ui/components/forms/formbtn.component";
@@ -10,16 +11,18 @@ import "@/ui/pages/admin/admin.page.css";
 import "@/ui/components/admin/eventedit.component.css";
 
 import { faClone, faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
+import { getListEvents } from "@/api/event.api";
+import { Event } from "@/shared/models/event.model";
 
 
 const EventsAdminPage: FC = (): ReactNode => {
+    const [events, setEvents] = useState<Event[] | undefined>(undefined);
+    
     useEffect(() => {
-        console.log("Loaded: Admin Page");
+        getListEvents()
+            .then(setEvents)
+            .catch((error: unknown) => { alert("Can't retrieve Events list :" + String(error)); });
     }, []);
-
-    useEffect(() => {
-        console.log("Rendered: Admin Page");
-    });
 
     return (
         <div className="clubs-modification-page">
@@ -55,7 +58,13 @@ const EventsAdminPage: FC = (): ReactNode => {
             
             <HorizontalSeparatorComp />
 
-            {/* <EventEdit /> */}
+            <EventEditForm
+                events={events ?? []}
+                onSave={async (updated_event) => {
+                    console.log("Saving event:", updated_event);
+                    await Promise.resolve();
+                }}
+            />
 
             <h3>
                 <FontAwesomeIcon icon={faHashtag} /> Event Preview

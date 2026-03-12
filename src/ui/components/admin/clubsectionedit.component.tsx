@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from "react";
+import { ChangeEvent, FC, ReactNode } from "react";
 import TextFieldComp from "@/ui/components/forms/textfield.component";
 import MultiLineTextFieldComp from "@/ui/components/forms/multilinefield.component";
 import FormBtnComp from "@/ui/components/forms/formbtn.component";
@@ -10,15 +10,7 @@ import { faClone, faTrash, faImage, faCircleXmark, faCircleCheck, faFilePen } fr
 
 import "@/ui/components/admin/eventedit.component.css";
 
-const EventFormComp: FC = (): ReactNode => {
-    useEffect(() => {
-        console.log("Loaded: Event Form Component");
-    }, []);
-
-    useEffect(() => {
-        console.log("Rendered: Event Form Component");
-    });
-
+const ClubSectionFormComp: FC = (): ReactNode => {
     return (
         <div className="event-modification-comp">
             <Timeline />
@@ -34,9 +26,32 @@ const EventFormComp: FC = (): ReactNode => {
                 </div>
 
                 <HorizontalSeparatorComp />
-                <TextFieldComp text="Section/Project Title" />
-                <MultiLineTextFieldComp text="Content" icon={faFilePen} />
-                <TextFieldComp text="Image" icon={faImage} />
+
+                <TextFieldComp
+                    text="Section/Project Title"
+                    onValueChange={function(event: ChangeEvent<HTMLInputElement>): void {
+                        throw new Error("Function not implemented." + event.target.value);
+                    }}
+                />
+
+                <MultiLineTextFieldComp
+                    id=""
+                    text="Content"
+                    icon={faFilePen}
+                    name=""
+                    value=""
+                    onValueChange={function(event: ChangeEvent<HTMLTextAreaElement>): void {
+                        throw new Error("Function not implemented." + event.target.value);
+                    }}
+                />
+
+                <TextFieldComp
+                    text="Image"
+                    icon={faImage}
+                    onValueChange={function(event: ChangeEvent<HTMLInputElement>): void {
+                        throw new Error("Function not implemented." + event.target.value);
+                    }}
+                />
                 
                 <div className="col2">
                     <FormBtnComp text="Cancel" icon={faCircleXmark} />
@@ -47,4 +62,4 @@ const EventFormComp: FC = (): ReactNode => {
     );
 };
 
-export default EventFormComp;
+export default ClubSectionFormComp;
