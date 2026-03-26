@@ -29,7 +29,7 @@ li {
     list-style: none;
 }
 
-a {
+.infobar-link-block-item > a {
     color: #202020;
     text-decoration: none;
     position: relative;
@@ -43,7 +43,7 @@ a {
         display: block;
         width: 0;
         height: 2px;
-        background: #0061BB;
+        background: #0061bb;
         transition: width 0.2s;
         position: absolute;
         bottom: -2px;
