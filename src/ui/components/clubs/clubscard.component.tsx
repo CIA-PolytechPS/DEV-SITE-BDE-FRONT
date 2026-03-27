@@ -2,9 +2,11 @@ import { FC } from "react";
 import { Club } from "@/shared/models/club.model";
 import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
+import { Event } from "@/shared/models/event.model";
 
 interface ClubCardProp {
-    club: Club;
+    club  : Club;
+    events: Event[];
 }
 
 const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
@@ -52,7 +54,7 @@ const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
                 <div className="mt-6 flex items-center justify-between">
                     <div className="flex items-center gap-2 rounded-2xl bg-primary/10 px-3 py-1">
                         <span className="text-sm text-primary">
-                            {props.club.events.length} {props.club.events.length > 1 ? "événements à venir" : "événement à venir"}
+                            {props.events.length} {props.events.length > 1 ? "événements à venir" : "événement à venir"}
                         </span>
                     </div>
 
