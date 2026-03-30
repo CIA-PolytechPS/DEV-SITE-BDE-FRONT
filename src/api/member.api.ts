@@ -2,22 +2,19 @@ import { Member, mapMember } from "@/shared/models/member.model";
 
 const MEMBERS: Member[] = [
     {
-        nom     : "Nom Prenom",
-        photo   : "/fillingPic.gif",
-        fonction: "Fonction",
-        email   : "nom.prenom@universite-paris-saclay.fr",
+        user_id    : 1,
+        club_id    : 1,
+        fonction_id: 1,
     },
     {
-        nom     : "Nom Prenom",
-        photo   : "/fillingPic.gif",
-        fonction: "Fonction",
-        email   : "nom.prenom@universite-paris-saclay.fr",
+        user_id    : 2,
+        club_id    : 2,
+        fonction_id: 2,
     },
     {
-        nom     : "Nom Prenom",
-        photo   : "/fillingPic.gif",
-        fonction: "Fonction",
-        email   : "nom.prenom@universite-paris-saclay.fr",
+        user_id    : 3,
+        club_id    : 3,
+        fonction_id: 3,
     },
 ];
 
