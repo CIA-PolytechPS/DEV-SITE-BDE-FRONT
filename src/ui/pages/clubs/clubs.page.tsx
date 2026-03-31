@@ -1,0 +1,24 @@
+import { FC, ReactNode, useEffect } from "react";
+import ClubsSectionComp from "@/ui/components/clubs/clubssection.component";
+import ClubsListComp from "@/ui/components/clubs/clubslist.component";
+import "@/ui/pages/clubs/clubs.page.css";
+
+const ClubPage: FC = (): ReactNode => {
+    useEffect(() => {
+        console.log("Loaded: ClubPage");
+    }, []);
+
+    useEffect(() => {
+        console.log("Rendered: ClubPage");
+    });
+
+    return (
+        <>
+            <ClubsSectionComp />
+            <hr />
+            <ClubsListComp />
+        </>
+    );
+};
+
+export default ClubPage;
