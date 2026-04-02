@@ -1,6 +1,6 @@
-import { Fonction, mapFonction } from "@/shared/models/fonction.model";
+import { Job, mapJob } from "@/shared/models/job.model";
 
-const FONCTIONS: Fonction[] = [
+const JOBS: Job[] = [
     {
         id       : 1,
         name     : "Nom Prenom",
@@ -21,8 +21,8 @@ const FONCTIONS: Fonction[] = [
     },
 ];
 
-export async function getFonctions(): Promise<Fonction[]> {
+export async function getAllJobs(): Promise<Job[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return FONCTIONS.map(mapFonction);
+    return JOBS.map(mapJob);
 }

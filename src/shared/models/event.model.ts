@@ -24,7 +24,7 @@ export interface EventCategory {
     color: string;
 }
 
-export const mapEvents = createMapper<Event>({
+export const mapEvent = createMapper<Event>({
     id                 : createConverter(unknownToNumber, 0),
     event_categories_id: createConverter(unknownToArray(unknownToNumber), []), // eslint-disable-line @typescript-eslint/naming-convention
     club_id            : createConverter(unknownToNumber, 0), // eslint-disable-line @typescript-eslint/naming-convention
@@ -39,7 +39,7 @@ export const mapEvents = createMapper<Event>({
     price              : createConverter(unknownToNumber, 0),
 });
 
-export const mapEventCategories = createMapper<EventCategory>({
+export const mapEventCategory = createMapper<EventCategory>({
     id   : createConverter(unknownToNumber, 0),
     name : createConverter(unknownToString, ""),
     color: createConverter(unknownToString, ""),

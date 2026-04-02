@@ -1,4 +1,4 @@
-import { Event, mapEventCategories, mapEvents, EventCategory } from "@/shared/models/event.model";
+import { Event, mapEventCategory, mapEvent, EventCategory } from "@/shared/models/event.model";
 
 const EVENTS: Event[] = [
     // Replace this by the API call to gather all the clubs.
@@ -108,28 +108,28 @@ const EVENT_CATEGORIES : EventCategory[] = [
     },
 ];
 
-export async function getListEvents(): Promise<Event[]> {
+export async function getAllEvents(): Promise<Event[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return EVENTS.map((event) => { return mapEvents(event); });
+    return EVENTS.map(mapEvent);
 }
 
 export async function getListFutureEvents(): Promise<Event[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return EVENTS.map((event) => { return mapEvents(event); }).filter((event) => { return event.end_date > new Date(); });
+    return EVENTS.filter((event) => { return event.end_date > new Date(); }).map(mapEvent);
 }
 
-export async function getEvent(id: number): Promise<Event | null> {
+export async function getEventById(id: number): Promise<Event | null> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    const data = EVENTS.map((event) => { return mapEvents(event); }).filter((event) => { return event.id == id; });
+    const raw_event = EVENTS.find((event) => { return event.id === id; });
 
-    return data[0] ?? null;
+    return raw_event ? mapEvent(raw_event) : null;
 }
 
 export async function getAllEventCategories(): Promise<EventCategory[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
-    return EVENT_CATEGORIES.map(mapEventCategories);
+    return EVENT_CATEGORIES.map(mapEventCategory);
 }

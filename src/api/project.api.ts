@@ -47,7 +47,7 @@ const PROJECTS: Project[] = [
     },
 ];
 
-export async function getProjects(): Promise<Project[]> {
+export async function getAllProjects(): Promise<Project[]> {
     await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
 
     return PROJECTS.map(mapProject);
