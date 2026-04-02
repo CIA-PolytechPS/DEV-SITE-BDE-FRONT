@@ -2,45 +2,28 @@ import { Club, mapClub } from "@/shared/models/club.model";
 
 const CLUBS: Club[] = [
     {
-        id            : 1,
-        name          : "CIA",
-        short_name    : "cia",
-        image_location: "/images/fillingPic.gif",
-        description   : "Le CIA c'est génial et on fait plein de trucs cools donc venez !",
-        board_members : "Maxime et Maxime et Maxime et Maxime",
-        events        : [
-            {
-                id            : 1,
-                club_id       : 1,
-                title         : "Soirée Tacos",
-                date          : new Date(),
-                place         : "Chez Maxime",
-                description   : "On va manger tacos",
-                capacity      : 10,
-                others        : "Apportez des tacos",
-                image_location: "",
-            },
-        ],
-        projects: [
-            {
-                id            : 1,
-                club_id       : 1,
-                title         : "Projet de ouf",
-                date          : new Date(),
-                description   : "On va faire un projet de ouf",
-                image_location: "",
-            },
-        ],
+        id         : 1,
+        name       : "CIA",
+        short_name : "cia",
+        location   : "B007",
+        logo_url   : "/images/fillingPic.gif",
+        banner_url : "/images/fillingPic.gif",
+        color      : "#ff0000",
+        alpha      : 0.5,
+        description: "Le CIA c'est génial et on fait plein de trucs cools donc venez !",
+
     },
     {
-        id            : 2,
-        name          : "BDE",
-        short_name    : "bde",
-        image_location: "/images/fillingPic.gif",
-        description   : "Le BDE c'est moins bien que le CIA mais c'est bien aussi !",
-        board_members : "",
-        events        : [],
-        projects      : [],
+        id         : 2,
+        name       : "BDE",
+        short_name : "bde",
+        location   : "B008",
+        logo_url   : "/images/fillingPic.gif",
+        banner_url : "/images/fillingPic.gif",
+        color      : "#0000ff",
+        alpha      : 0.5,
+        description: "Le BDE c'est moins bien que le CIA mais c'est bien aussi !",
+
     },
 ];
 

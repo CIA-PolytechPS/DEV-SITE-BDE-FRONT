@@ -1,36 +1,69 @@
 import { FC } from "react";
 import { Club } from "@/shared/models/club.model";
 import { Link } from "react-router-dom";
+import PlaceIcon from "@mui/icons-material/Place";
+import { Event } from "@/shared/models/event.model";
 
 interface ClubCardProp {
-    club: Club;
+    club  : Club;
+    events: Event[];
 }
 
 const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
     return (
-        <div
-            className="
-            flex flex-col md:flex-row items-start mx-auto my-5 bg-secondary backdrop-blur-lg
-            shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
-            rounded-3xl w-full max-w-5xl p-6 hover:shadow-[0_3px_10px_0_rgba(31,38,135,0.37)]
-            hover:-translate-y-2
-            transition-all duration-300 ease-in-out
-            "
+        <div className="w-full max-w-5xl mx-auto my-5 bg-secondary border border-tertiary rounded-xl
+       overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
         >
-            <div className="flex-shrink-0 w-64 h-64 overflow-hidden rounded-full">
-                <img src={props.club.image_location} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
+            <div
+                className="h-32 w-full"
+                style={{ backgroundColor: props.club.color }}
+            >
+                <div
+                    className="h-32 w-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${props.club.banner_url})`, opacity: props.club.alpha }}
+                />
             </div>
 
-            <div className="flex flex-col grow-1 justify-between ml-5">
-                <div className="flex justify-between items-start my-0">
-                    <h2 className="text-[35px] my-0 leading-none">{props.club.name}</h2>
+            <div className="px-6 pb-6 relative">
+                <div className="flex items-start gap-4">
+                    <div className="w-24 h-24 shrink-0 rounded-xl border border-tertiary bg-secondary
+                    shadow-sm overflow-hidden -mt-10 z-10 flex items-center justify-center p-1"
+                    >
+                        <img
+                            src={props.club.logo_url}
+                            alt={`Logo ${props.club.name}`}
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
 
-                    <Link to={`/club/${props.club.short_name}`} className="translate-y-1/80">
-                        <button> More </button>
-                    </Link>
+                    <div className="flex-1 mt-2">
+                        <h2>
+                            {props.club.name} ({props.club.short_name})
+                        </h2>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-gray-700 text-sm mt-2 font-medium">
+                        <PlaceIcon className="text-primary" />{props.club.location}
+                    </div>
                 </div>
 
-                <p className="mt-2 text-lg leading-relaxed">{props.club.description}</p>
+                <div className="mt-4 leading-relaxed">
+                    <p>{props.club.description}</p>
+                </div>
+
+                <div className="mt-6 flex items-center justify-between">
+                    <div className="flex items-center gap-2 rounded-2xl bg-primary/10 px-3 py-1">
+                        <span className="text-sm text-primary">
+                            {props.events.length} {props.events.length > 1 ? "événements à venir" : "événement à venir"}
+                        </span>
+                    </div>
+
+                    <Link to={`/club/${props.club.short_name}`}>
+                        <button>
+                            Voir Plus
+                        </button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

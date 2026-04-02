@@ -11,7 +11,7 @@ const DetailedClubsSectionComp: FC<DetailedClubSectionProp> = (props: DetailedCl
         <section className="py-16 px-8 bg-secondary w-screen relative left-1/2 -translate-x-1/2">
             <div className="max-w-6xl mx-auto grid grid-cols-[35%_65%] gap-10 items-start">
                 <div>
-                    <img className="rounded-full" src={props.club.image_location} alt="Ceci est une image." />
+                    <img className="rounded-full" src={props.club.logo_url} alt="Ceci est une image." />
                 </div>
 
                 <div className="text-lg">
