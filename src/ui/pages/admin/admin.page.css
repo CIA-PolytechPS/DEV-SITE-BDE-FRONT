@@ -1,0 +1,53 @@
+
+.admin-page {
+    --text-color-primary: #202020;
+    --text-color-seconday: #7C7C7C;
+    --text-color-brand: #0061BB;
+    --text-color-invert: #F5F5F5;
+
+    --surface-color-primary: #F5F5F5;
+    --surface-color-seconday: #343434;
+    --surface-color-brand: #202020;
+    --surface-color-invert: #58AEFF;
+
+    --border-color-primary: #202020;
+    --border-color-secondary: #0061BB;
+    
+    background-color: var(--surface-color-primary);
+
+    margin: 3% 10%;
+    
+    & h3 {
+        font-weight: bold;
+        color: var(--text-color-brand);
+    }
+    
+    & h2 {
+        font-weight: bold;
+        color: var(--text-color-brand);
+    }
+
+    & span p {
+        margin: 14px 6px;
+    }
+}
+
+
+/* Top Bar */
+.admin-page .admin-page-topbars {
+    display: flex;
+    flex-direction: row;
+    
+    & a {
+        color: var(--text-color-brand);
+    }
+
+    & a:hover {
+        color: var(--text-color-normal);
+    }
+
+    & li {
+        margin: 4px 10px;
+        padding: 2px;
+    }
+}

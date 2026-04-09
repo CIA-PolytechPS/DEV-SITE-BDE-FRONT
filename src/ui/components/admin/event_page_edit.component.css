@@ -1,0 +1,19 @@
+
+.event-page-form-comp {
+    display: flex;
+    flex-direction: row;
+
+    & .event-form {
+        width: 100%;
+    }
+
+    & .col3 {
+        display:flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    & .row {
+        width: 100%;
+    }
+}

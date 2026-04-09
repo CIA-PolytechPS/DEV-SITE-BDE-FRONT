@@ -7,6 +7,7 @@ import "@/app.css";
 
 const HomePage     = lazy(() => { return import("@/ui/pages/home/home.page"); });
 const NotFoundPage = lazy(() => { return import("@/ui/pages/not_found.page"); });
+const AdminPage = lazy(() => { return import("@/ui/pages/admin/admin.page"); });
 
 const App: FC = (): ReactNode => {
     useEffect(() => {
@@ -26,6 +27,7 @@ const App: FC = (): ReactNode => {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="*" element={<NotFoundPage />} />
+                        <Route path="/admin/*" element={<AdminPage />} />
                     </Routes>
                 </Suspense>
             </main>

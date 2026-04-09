@@ -1,0 +1,37 @@
+
+.event-form {
+    & button {
+        width: 100%;
+        padding: 4px;
+        margin: 2px 0;
+
+        font-weight: bold;
+
+        border-radius: 6px;
+        border: white 2px solid;
+
+        color: var(--text-color-invert);
+        background-color: var(--text-color-brand);
+
+        box-shadow: rgba(0, 0, 0, 0.507) 1px 0px 4px 0px;
+
+        /* Icons */
+        & > svg > path {
+            color: var(--text-color-invert);
+            margin-right: 6px;
+        }
+
+        /* Text */
+        & > span {
+            margin-left: 6px;
+            color: var(--text-color-invert)
+        }
+        
+        /* When Mouse Enters Button */
+        &:hover{
+            background-color: var(--surface-color-invert);
+            border-color: var(--text-color-brand);
+            box-shadow: rgba(1, 1, 1, 0.507) 1px 0px 4px 0px;
+        }
+    }
+}

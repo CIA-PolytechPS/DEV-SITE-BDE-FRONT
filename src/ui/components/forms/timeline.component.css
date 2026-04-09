@@ -1,0 +1,132 @@
+
+.form-timeline-comp {
+    background-color: var(--surface-color-primary);
+    width: 30%;
+}
+
+/* The actual timeline (the vertical ruler) */
+.form-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* The actual timeline (the vertical ruler) */
+    &::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: var(--border-color-secondary);
+        top: 0;
+        bottom: 0;
+        margin-left: -3px;
+        left: 10%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        }
+
+    /* Container around content */
+    & .form-timeline-container {
+        padding: 6px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 90%;
+        left: 10%;
+        width: fit-content;
+
+        /* Disable button box-shadow */
+        box-shadow: none;
+
+        &:hover{
+            box-shadow: none;
+        }
+
+        /* The circles on the timeline */
+        &::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--border-color-secondary);;
+            border: 4px solid var(--border-color-secondary);;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 2;
+            left: -12px;
+        }
+    }
+
+    /* Add arrows to the right container (pointing left) */
+    .right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 10px;
+        width: 0;
+        z-index: 1;
+        left: -10px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    /* Exception for the button add */
+    & .form-timeline-button-add {
+        & .form-timeline-content{
+            font-weight: bold;
+            border: white 2px solid;
+
+            color: var(--text-color-invert);
+            background-color: var(--text-color-brand);
+
+            box-shadow: rgba(0, 0, 0, 0.507) 1px 0px 4px 0px;
+
+            &:hover{
+                background-color: var(--surface-color-invert);
+                border-color: var(--text-color-brand);
+                box-shadow: rgba(1, 1, 1, 0.507) 1px 0px 4px 0px;
+            }
+        }
+        
+        /* Fix the circle for containers on the right side */
+        & .right::after {
+            left: -16px;
+        }
+
+        /* Exception Arrow */
+        & .right::before {
+            border-color: transparent var(--text-color-brand) transparent transparent;
+        }
+    }
+
+    /* The actual content */
+    & .form-timeline-content {
+        padding: 8px 10px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+    }
+
+    
+    /* When you pass the mouse on the top of a container*/
+    & .form-timeline-container{
+        &:hover .form-timeline-content{
+            background-color: var(--surface-color-invert);
+        }
+
+        &:hover::after {
+            background-color: var(--surface-color-invert);
+        }
+
+        &:hover .right::before {
+            border-color: transparent var(--surface-color-invert) transparent transparent;
+        }
+    }
+}
+
+
+
+
+
+
+

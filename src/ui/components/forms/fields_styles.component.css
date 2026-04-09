@@ -1,0 +1,31 @@
+
+.event-form {
+    & label, & span {
+        font-weight: bold;
+        color: var(--text-color-brand);
+    }
+
+    & svg > path {
+        color: var(--text-color-brand);
+    }
+
+    & input[type=text], & input[type=date], & input[type=time], & input[type=number], & textarea, & input[type=datetime-local], & textarea, & select {
+        width: 100%;
+        padding: 4px;
+        margin: 2px 0;
+        box-sizing: border-box;
+        border-radius: 4px;
+        color: var(--text-color-primary);
+        border: var(--border-color-primary) 1px solid;
+        background-color: white;
+    }
+
+    & textarea {
+        height: fit-content;
+    }
+
+    & .multi-line-text-field {
+        display: flex;
+        flex-direction: column;
+    }
+}

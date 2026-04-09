@@ -1,0 +1,20 @@
+
+.form-separator{
+    background-color: var(--border-color-secondary);
+
+    &.form-separator-horizontal{
+        margin: 40px 20px;
+        min-height: 2px;
+        max-height: 2px;
+        height: 2px;
+    }
+
+    &.form-separator-vertical{
+        margin: 20px 40px;
+        min-width: 2px;
+        max-width: 2px;
+        width: 2px;
+        height: auto;
+    }
+}
+
