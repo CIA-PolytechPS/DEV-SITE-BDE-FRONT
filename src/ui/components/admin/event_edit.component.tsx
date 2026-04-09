@@ -2,15 +2,15 @@ import { FC, ReactNode, useEffect, useState, MouseEvent, ChangeEvent } from "rea
 import { datetimeLocalStringToDate } from "@/shared/utils/common/date.utils";
 
 // Custom Components //
-import TextFieldComp from "@/ui/components/forms/text_field.component";
-import DatetimeFieldComp from "@/ui/components/forms/datetime_field.component";
-import NumberFieldComp from "@/ui/components/forms/number_field.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import TextFieldComp from "@/ui/components/forms/fields/text.component";
+import DatetimeFieldComp from "@/ui/components/forms/fields/datetime.component";
+import NumberFieldComp from "@/ui/components/forms/fields/number.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/fields/multi_line.component";
 import FormBtnComp from "@/ui/components/forms/form_btn.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontal_separator.component";
 import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
 import Timeline from "@/ui/components/forms/timeline.component";
-import BoxDownFieldComp from "@/ui/components/forms/boxdown_field.component";
+import BoxDownFieldComp from "@/ui/components/forms/fields/boxdown.component";
 import EventPageForm from "@/ui/components/admin/event_page_edit.component";
 
 // Icons //
@@ -31,7 +31,7 @@ interface EventFormEditorProps {
     onSave: (updatedEvent: Event) => Promise<void>;
 }
 
-const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode => {
+const EventFormComp: FC<EventFormEditorProps> = ( props ): ReactNode => {
     const [selected_event_id, setSelectedEventId] = useState<number>(-1);
     const [form_data, setFormData] = useState<Event | null>(null);
     const [is_loading, setIsLoading] = useState(false);
@@ -44,12 +44,8 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
     const { event_categories } = useGeneralVars();
 
     useEffect(() => {
-        console.log("Rendered: Event Form Component");
-    });
-
-    useEffect(() => {
-        if (selected_event_id || selected_event_id == 0) {
-            const selected = events.find((e) => { return e.id === selected_event_id; });
+        if (selected_event_id != -1) {
+            const selected = props.events.find((e) => { return e.id === selected_event_id; });
 
             if (selected) {
                 // IMPORTANT: Create a copy to avoid modifying the original.
@@ -70,13 +66,11 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
             setStartFieldDateValue("");
             setEndFieldDateValue("");
         }
-    }, [selected_event_id, events]);
+    }, [selected_event_id, props.events]);
 
 
     // Utility function to update the state
-    const setFormDataValue = (name: string, value: string | number | Date) => {
-        console.warn("New Value : ", name, " = ", value);
-
+    function setFormDataValue (name: string, value: string | number | Date) {
         if (form_data) {
             setFormData({
                 ...form_data,
@@ -86,17 +80,13 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
     };
 
     // Handler for text, number, etc. inputs.
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
+    function handleInputChange (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
         setFormDataValue(name, value);
     };
 
     // Handler for the Datetime field only
-    const handleDatetimeInputChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-    ) => {
+    function handleDatetimeInputChange (e: ChangeEvent<HTMLInputElement>) {
         const { name, value } = e.target;
         
         if (form_data?.[name as keyof Event]) {
@@ -117,11 +107,12 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
         }
     };
 
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedEventId(Number(e.target.value));
+    function handleSelectChange (e: React.ChangeEvent<HTMLSelectElement>) {
+        const value = e.target.value;
+        setSelectedEventId(value === "" ? -1 : Number(value));
     };
 
-    const handleSave = async () => {
+    async function handleSave () {
         if (!form_data) {
             setError("Please select an event");
 
@@ -132,7 +123,7 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
         setError(null);
 
         try {
-            await onSave(form_data);
+            await props.onSave(form_data);
             console.log("Event successfully saved");
         }
         catch(err) {
@@ -147,17 +138,26 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
         }
     };
 
-    const timelineNewEventSelect = (event: MouseEvent, value: string) => {
-        const selected_event = events.find((e) => { return e.name === value; });
+    function timelineNewEventSelect (event: MouseEvent, value: string) {
+        const selected_event = props.events.find((e) => { return e.name === value; });
         console.log(event);
         setSelectedEventId(selected_event?.id ?? -1);
+    };
+
+    
+    function removeCategory (cat_id: number, form_data: any) {
+        if (!form_data) return;
+        setFormData({
+            ...form_data,
+            event_categories_id: form_data.event_categories_id.filter((id: number) => { return id !== cat_id; }),
+        });
     };
 
     return (
         <div>
             <div className="event-modification-comp">
                 <Timeline
-                    values={events.map((event) => { return event.name; })}
+                    values={props.events.map((event) => { return event.name; })}
                     valueChangeEvent={timelineNewEventSelect}
                     default_value={form_data?.name ?? ""}
                 />
@@ -176,7 +176,7 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
                         >
                             <option value="">-- Choisir un événement --</option>
 
-                            {events.map((event) => {
+                            {props.events.map((event) => {
                                 return (
                                     <option key={event.id} value={event.id}>
                                         {event.name} ({event.startdate.toLocaleDateString()})
@@ -199,7 +199,6 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
                         text="Event Title"
                         name="name"
                         value={form_data?.name ?? ""}
-                        default_value={form_data?.name ?? ""}
                         placeholder="Event Title"
                         onValueChange={handleInputChange}
                     />
@@ -280,20 +279,14 @@ const EventFormComp: FC<EventFormEditorProps> = ({ events, onSave }): ReactNode 
                                 {form_data.event_categories_id.map((cat_id) => {
                                     const cat = event_categories.current.find((c) => { return c.id === cat_id; });
 
-                                    const removeCategory = (cat_id: number) => {
-                                        setFormData({
-                                            ...form_data,
-                                            event_categories_id: form_data.event_categories_id.filter((id) => { return id !== cat_id; }),
-                                        });
-                                    };
-
                                     return (
                                         <span key={cat_id} className="event-category-tag">
                                             {cat ? cat.name : "Unknown Category"}
 
                                             <button
                                                 className="event-category-delete-btn"
-                                                onClick={() => { removeCategory(cat_id); }}
+                                                type="button"
+                                                onClick={() => { removeCategory(cat_id, form_data); }}
                                             >
                                                 <FontAwesomeIcon icon={faCircleXmark} />
                                             </button>

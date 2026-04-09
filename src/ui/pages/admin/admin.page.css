@@ -1,5 +1,5 @@
 
-.event-modification-page, .clubs-modification-page{
+.admin-page {
     --text-color-primary: #202020;
     --text-color-seconday: #7C7C7C;
     --text-color-brand: #0061BB;
@@ -16,20 +16,20 @@
     background-color: var(--surface-color-primary);
 
     margin: 3% 10%;
-}
+    
+    & h3 {
+        font-weight: bold;
+        color: var(--text-color-brand);
+    }
+    
+    & h2 {
+        font-weight: bold;
+        color: var(--text-color-brand);
+    }
 
-.event-modification-page h3, .clubs-modification-page h3 {
-    font-weight: bold;
-    color: var(--text-color-brand);
-}
-
-.event-modification-page h2, .clubs-modification-page h2 {
-    font-weight: bold;
-    color: var(--text-color-brand);
-}
-
-.event-modification-page text p, .clubs-modification-page text p {
-    margin: 14px 6px;
+    & span p {
+        margin: 14px 6px;
+    }
 }
 
 
@@ -37,15 +37,17 @@
 .admin-page .admin-page-topbars {
     display: flex;
     flex-direction: row;
-}
+    
+    & a {
+        color: var(--text-color-brand);
+    }
 
-.admin-page .admin-page-topbars a {
-    color: var(--text-color-brand)
-}
-.admin-page .admin-page-topbars a:hover {
-    color: var(--text-color-invert)
-}
-.admin-page .admin-page-topbars li {
-    margin: 4px 10px;
-    padding: 2px;
+    & a:hover {
+        color: var(--text-color-normal);
+    }
+
+    & li {
+        margin: 4px 10px;
+        padding: 2px;
+    }
 }

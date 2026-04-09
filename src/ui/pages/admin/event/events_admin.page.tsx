@@ -17,26 +17,24 @@ const EventsAdminPage: FC = (): ReactNode => {
     }, []);
 
     return (
-        <div className="event-modification-page">
-            
-            <h2>Events Modication Page (Admin Page)</h2>
+        <div>
+            <h2>Events Modification Page (Admin Page)</h2>
 
-            <text>
-                <p>Select an event either from the list on the left or from the “Selected Event” section. </p>
-
-                <p>
-                    Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
-                    fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
-                </p>
-
-                <p>
-                    Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
-                    consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
-                    eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
-                    plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
-                    Mediolanum ad hiberna discessit.
-                </p>
-            </text>
+            <p>
+                Select an event either from the list on the left or from the “Selected Event” section.
+                <br />
+                <br />
+                Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
+                fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
+                <br />
+                <br />
+                Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
+                consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
+                eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
+                plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
+                Mediolanum ad hiberna discessit.
+                <br />
+            </p>
 
             <HorizontalSeparatorComp />
 

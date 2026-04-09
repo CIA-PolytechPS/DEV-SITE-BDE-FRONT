@@ -3,7 +3,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import LoadingComp from "@/ui/components/common/loading.component";
 
 import "@/ui/pages/admin/admin.page.css";
-import "@/ui/components/admin/event_edit.component.css";
 
 const EventsAdminPage = lazy(() => { return import("@/ui/pages/admin/event/events_admin.page"); });
 const ClubsAdminPage = lazy(() => { return import("@/ui/pages/admin/club/clubs_admin.page"); });
@@ -26,7 +25,7 @@ const AdminPage: FC = (): ReactNode => {
     });
 
     return (
-        <div className="admin-page clubs-modification-page">
+        <div className="admin-page">
             <ul className="admin-page-topbars">
                 <li>
                     <Link to="/admin/event">Events</Link>
@@ -39,7 +38,7 @@ const AdminPage: FC = (): ReactNode => {
             
             <Suspense fallback={<LoadingComp size={150} />}>
                 <Routes>
-                    <Route path="/" element={<ContentAdminComp />} />
+                    <Route element={<ContentAdminComp />} index />
                     <Route path="event" element={<EventsAdminPage />} />
                     <Route path="club" element={<ClubsAdminPage />} />
                 </Routes>

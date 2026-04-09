@@ -5,21 +5,27 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import "@/ui/components/forms/fields_styles.component.css";
 
 interface BoxDownFieldCompProps {
+    id?              : string;
     text             : string;
+    name?            : string;
     default_value?   : string;
     icon?            : IconDefinition;
     values           : string[];
     valueChangeEvent?: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const BoxDownFieldComp: FC<BoxDownFieldCompProps> = ({ text, icon = faPen, default_value = "", values = [], valueChangeEvent }) => {
+const BoxDownFieldComp: FC<BoxDownFieldCompProps> = (props: BoxDownFieldCompProps) => {
     return (
         <div className="form-field">
-            <text><FontAwesomeIcon icon={icon} /> {text}</text>
+            <span><FontAwesomeIcon icon={props.icon ?? faPen} /> {props.text}</span>
 
-            <select id="cars" name="cars" onChange={valueChangeEvent} defaultValue={default_value}>
-                {values.map((value) => {
-                    return <option value={value}>{value}</option>;
+            <select id={props.id} name={props.name} onChange={props.valueChangeEvent} defaultValue={props.default_value}>
+                {props.values?.map((value) => {
+                    return (
+                        <option key={value} value={value}>
+                            {value}
+                        </option>
+                    );
                 })}
             </select>
         </div>

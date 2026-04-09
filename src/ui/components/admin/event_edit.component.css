@@ -6,64 +6,68 @@
 
 .event-form {
     width: 80%; 
+
+    & .col3 {
+        display:flex;
+        justify-content: center;
+        gap: 10px;
 }
 
-.event-form .col3 {
-    display:flex;
-    justify-content: center;
-    gap: 10px;
-}
+    & .col2 {
+        display:flex;
+        justify-content: center;
+        gap: 10px;
+    }
 
-.event-form .col2 {
-    display:flex;
-    justify-content: center;
-    gap: 10px;
-}
+    & .form-field{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 4px;
+    }
 
-.event-form .form-field{
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 4px;
-}
+    & .form-field.form-field-date{
+        width: 50%;
+    }
 
-.event-form .form-field.form-field-date{
-    width: 50%;
-}
+    & .form-field.form-field-time{
+        width: 50%;
+    }
 
-.event-form .form-field.form-field-time{
-    width: 50%;
-}
+    & .form-field.form-field-number{
+        width: 50%;
+    }
 
-.event-form .form-field.form-field-number{
-    width: 50%;
-}
+    & .event-category-tag{ 
+        display: inline-block;
+        padding: 0px 4px;
+        background-color: white;
+        border: solid 1px var(--border-color-primary);
+        border-radius: 20px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-weight: normal;
+        color: var(--text-color-normal);
 
-.event-form .event-category-tag{
-    display: inline-block;
-    padding: 0px 4px;
-    background-color: white;
-    border: solid 1px var(--border-color-primary);
-    border-radius: 20px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-.event-form .event-category-tag .event-category-delete-btn{
-    width: auto;
-    margin: 0;
-    margin-left: 5px;
-    padding: 0px 0px;
-    border-radius: 40px;
-    color: var(--text-color-primary);
-    /* border: solid 1px var(--border-color-primary); */
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    box-shadow: none;
-}
+        & .event-category-delete-btn{
+            width: auto;
+            margin: 0;
+            margin-left: 5px;
+            padding: 0px 0px;
+            border-radius: 40px;
+            color: var(--text-color-primary);
+            /* border: solid 1px var(--border-color-primary); */
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            box-shadow: none;
 
-.event-form .event-category-tag .event-category-delete-btn path {
-    color: var(--text-color-brand);
-}
-.event-form .event-category-tag .event-category-delete-btn:hover path {
-    color: var(--surface-color-invert);
+            & path {
+                color: var(--text-color-brand);
+            }
+
+            &:hover path {
+                color: var(--surface-color-invert);
+            }
+        }
+    }
 }

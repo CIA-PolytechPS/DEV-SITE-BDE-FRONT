@@ -3,7 +3,7 @@ import EventEditForm from "@/ui/components/admin/event_edit.component";
 import ClubSectionEdit from "@/ui/components/admin/club_section_edit.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontal_separator.component";
 import FormBtnComp from "@/ui/components/forms/form_btn.component";
-import BoxDownFieldComp from "@/ui/components/forms/boxdown_field.component";
+import BoxDownFieldComp from "@/ui/components/forms/fields/boxdown.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,7 +15,7 @@ import { getListEvents } from "@/api/event.api";
 import { Event } from "@/shared/models/event.model";
 
 
-const EventsAdminPage: FC = (): ReactNode => {
+const ClubsAdminPage: FC = (): ReactNode => {
     const [events, setEvents] = useState<Event[] | undefined>(undefined);
     
     useEffect(() => {
@@ -25,24 +25,20 @@ const EventsAdminPage: FC = (): ReactNode => {
     }, []);
 
     return (
-        <div className="clubs-modification-page">
-            
-            <h2>Clubs Modication Page (Admin Page)</h2>
+        <div>
+            <h2>Clubs Modification Page (Admin Page)</h2>
 
-            <text>
-                <p>
-                    Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
-                    fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
-                </p>
-
-                <p>
-                    Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
-                    consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
-                    eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
-                    plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
-                    Mediolanum ad hiberna discessit.
-                </p>
-            </text>
+            <p>
+                Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
+                fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad placidiora deverti.
+                <br />
+                <br />
+                Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio
+                consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam
+                eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse
+                plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator
+                Mediolanum ad hiberna discessit.
+            </p>
 
             <HorizontalSeparatorComp />
 
@@ -80,4 +76,4 @@ const EventsAdminPage: FC = (): ReactNode => {
     );
 };
 
-export default EventsAdminPage;
+export default ClubsAdminPage;

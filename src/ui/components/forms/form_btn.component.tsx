@@ -11,15 +11,15 @@ interface FormBtnCompProps {
     btnOnClick?  : () => void;
 }
 
-const FormBtnComp: FC<FormBtnCompProps> = ({ text, icon = faFile, btn_disabled = false, btnOnClick }) => {
+const FormBtnComp: FC<FormBtnCompProps> = (props: FormBtnCompProps) => {
     return (
         <button
             type="button"
-            disabled={btn_disabled}
-            onClick={btnOnClick}
+            disabled={props.btn_disabled ?? false}
+            onClick={props.btnOnClick}
         >
-            <FontAwesomeIcon icon={icon} />
-            <text>{text}</text>
+            <FontAwesomeIcon icon={props.icon ?? faFile} />
+            <span>{props.text}</span>
         </button>
     );
 };

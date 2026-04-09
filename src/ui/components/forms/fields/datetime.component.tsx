@@ -16,23 +16,21 @@ interface DatetimeFieldCompProps {
     onValueChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const DatetimeFieldComp: FC<DatetimeFieldCompProps> = ({ id, name, text, value = "", icon = faCalendar, onValueChange }) => {
+const DatetimeFieldComp: FC<DatetimeFieldCompProps> = (props: DatetimeFieldCompProps) => {
     return (
         <div className="form-field form-field-date">
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon icon={props.icon ?? faCalendar} />
 
-            <label htmlFor={id}>
-                {text}
+            <label htmlFor={props.id}>
+                {props.text}
             </label>
 
             <input
-                id={id}
-                name={name}
-                value={
-                    dateToDatetimeLocalString(value)
-                }
+                id={props.id}
+                name={props.name}
+                value={dateToDatetimeLocalString(props.value)}
                 type="datetime-local"
-                onChange={onValueChange}
+                onChange={props.onValueChange}
             />
         </div>
     );

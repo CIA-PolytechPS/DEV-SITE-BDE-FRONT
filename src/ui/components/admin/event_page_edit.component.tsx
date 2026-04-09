@@ -1,6 +1,6 @@
 import { FC, ReactNode, ChangeEvent, ChangeEventHandler } from "react";
 import FormBtnComp from "@/ui/components/forms/form_btn.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/fields/multi_line.component";
 import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
 
 import { faPencil, faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -14,19 +14,19 @@ interface EventPageFormCompProps {
     onValueChange: ChangeEventHandler<HTMLTextAreaElement>;
 }
 
-const EventPageFormComp: FC<EventPageFormCompProps> = ({ name = "", id = "", value = "", onValueChange }): ReactNode => {
+const EventPageFormComp: FC<EventPageFormCompProps> = (props: EventPageFormCompProps): ReactNode => {
     return (
         <div className="event-page-form-comp">
             <div className="event-form">
                 <div className="col3">
                     <div className="row">
                         <MultiLineTextFieldComp
-                            id={id}
+                            id={props.id + "_content"}
                             text="Event Page Content"
                             icon={faPencil}
-                            name={name}
-                            value={value}
-                            onValueChange={onValueChange}
+                            name={props.name + "_content"}
+                            value={props.value?? ""}
+                            onValueChange={props.onValueChange}
                         />
 
                         <FormBtnComp text="Save the new modification" icon={faPencil} />
@@ -36,13 +36,13 @@ const EventPageFormComp: FC<EventPageFormCompProps> = ({ name = "", id = "", val
                     
                     <div className="row">
                         <MultiLineTextFieldComp
-                            id={id}
+                            id={props.id + "_preview"}
                             text="Event Page Preview"
                             icon={faPlay}
-                            name={name}
-                            value={value}
-                            onValueChange={function(event: ChangeEvent<HTMLTextAreaElement>): void {
-                                throw new Error("Function not implemented." + event.target.value);
+                            name={props.name + "_preview"}
+                            value={props.value?? ""}
+                            onValueChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
+                                console.log("Function not implemented." + event.target.value);
                             }}
                         />
 

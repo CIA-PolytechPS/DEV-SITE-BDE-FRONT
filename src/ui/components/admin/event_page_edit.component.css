@@ -2,19 +2,18 @@
 .event-page-form-comp {
     display: flex;
     flex-direction: row;
-}
 
-.event-page-form-comp .event-form {
-    width: 100%;
-}
+    & .event-form {
+        width: 100%;
+    }
 
+    & .col3 {
+        display:flex;
+        justify-content: center;
+        gap: 10px;
+    }
 
-.event-page-form-comp .col3 {
-    display:flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.event-page-form-comp .row {
-    width: 100%;
+    & .row {
+        width: 100%;
+    }
 }

@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, ReactNode } from "react";
-import TextFieldComp from "@/ui/components/forms/text_field.component";
-import MultiLineTextFieldComp from "@/ui/components/forms/multi_line_field.component";
+import TextFieldComp from "@/ui/components/forms/fields/text.component";
+import MultiLineTextFieldComp from "@/ui/components/forms/fields/multi_line.component";
 import FormBtnComp from "@/ui/components/forms/form_btn.component";
 import HorizontalSeparatorComp from "@/ui/components/forms/horizontal_separator.component";
 import VerticalSeparatorComp from "@/ui/components/forms/vertical_separator.component";
-import BoxDownFieldComp from "@/ui/components/forms/boxdown_field.component";
+import BoxDownFieldComp from "@/ui/components/forms/fields/boxdown.component";
 import Timeline from "@/ui/components/forms/timeline.component";
 import { faClone, faTrash, faImage, faCircleXmark, faCircleCheck, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,8 +29,8 @@ const ClubSectionFormComp: FC = (): ReactNode => {
 
                 <TextFieldComp
                     text="Section/Project Title"
-                    onValueChange={function(event: ChangeEvent<HTMLInputElement>): void {
-                        throw new Error("Function not implemented." + event.target.value);
+                    onValueChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                        console.log("Function not implemented." + event.target.value);
                     }}
                 />
 
@@ -40,16 +40,16 @@ const ClubSectionFormComp: FC = (): ReactNode => {
                     icon={faFilePen}
                     name=""
                     value=""
-                    onValueChange={function(event: ChangeEvent<HTMLTextAreaElement>): void {
-                        throw new Error("Function not implemented." + event.target.value);
+                    onValueChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
+                        console.log("Function not implemented." + event.target.value);
                     }}
                 />
 
                 <TextFieldComp
                     text="Image"
                     icon={faImage}
-                    onValueChange={function(event: ChangeEvent<HTMLInputElement>): void {
-                        throw new Error("Function not implemented." + event.target.value);
+                    onValueChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                        console.log("Function not implemented." + event.target.value);
                     }}
                 />
                 
