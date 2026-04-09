@@ -1,12 +1,29 @@
 import { FC, ReactNode, useEffect, useState } from "react";
 import { getMembers } from "@/api/member.api";
-import { Member } from "@/shared/models/member.model";
 import MemberCard from "@/ui/components/members/card.component";
 import { CircularProgress } from "@mui/material";
 import { unknownToString } from "@/shared/utils/common/convert.util";
 
+export interface MemberCardInfo {
+    user_id : number;
+    club_id : number;
+    job_id  : number;
+    photo   : string;
+    nom     : string;
+    fonction: string;
+    email   : string;
+}
+
+async function getMembers(): Promise<MemberCardInfo[]> {
+    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    
+    // TODO
+
+    return [];
+}
+
 const MembersListComp: FC = (): ReactNode => {
-    const [members, setmembers] = useState<Member[]>([]);
+    const [members, setmembers] = useState<MemberCardInfo[]>([]);
 
     useEffect(() => {
         getMembers()
