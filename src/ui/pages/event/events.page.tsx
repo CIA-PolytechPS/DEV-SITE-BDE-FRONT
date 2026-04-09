@@ -70,11 +70,9 @@ const EventsPage: FC = (): ReactNode => {
         <ul>
             {events.map((event) => {
                 return (
-                    <li key={event.id} style={{ margin: "40px" }}>
+                    <li key={event.id} className="m-5 border-2 border-solid border-gray-300 rounded-lg p-4 bg-gray text-black hover:bg-gray-200">
                         <Link to={`/event/${event.id.toString()}`}>
-                            <EventCardComp event={event}>
-                                <code lang="python">print(Hello world)</code>
-                            </EventCardComp>
+                            <EventCardComp event={event} />
                         </Link>
 
                         <hr />
