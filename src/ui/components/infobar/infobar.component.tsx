@@ -27,6 +27,7 @@ const InfobarComp: FC = () => {
                     <Link to="/">Home</Link>
                     <Link to="/event">Event</Link>
                     <Link to="/club">Club</Link>
+                    <Link to="/projects">Projects</Link>
                 </InfobarLinkBlockComp>
 
                 <InfobarLinkBlockComp title="Community">
