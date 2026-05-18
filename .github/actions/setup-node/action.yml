@@ -25,11 +25,6 @@ runs:
           cache-node-${{ hashFiles('package-lock.json') }}-
           cache-node-
 
-    - name: Update npm
-      if: ${{ inputs.install == 'true' }}
-      run: npm install -g npm@latest
-      shell: bash
-
     - name: Install packages
       if: ${{ inputs.install == 'true' }}
       run: npm ci

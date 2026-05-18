@@ -18,7 +18,7 @@ const ClubCardComp: FC<ClubCardProp> = (props: ClubCardProp) => {
             "
         >
             <div className="flex-shrink-0 w-64 h-64 overflow-hidden rounded-full">
-                <img src={props.club.image_location} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
+                <img src={props.club.logo} alt="Ceci n'est pas une image" className="w-full h-full object-contain" />
             </div>
 
             <div className="flex flex-col grow-1 justify-between ml-5">

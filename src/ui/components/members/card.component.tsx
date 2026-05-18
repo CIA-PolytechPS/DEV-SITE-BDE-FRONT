@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Member } from "@/shared/models/member.model";
+import { MemberCardInfo } from "@/ui/components/members/list.component";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 
 interface MemberCardProps {
-    member: Member;
+    member: MemberCardInfo;
 }
 
 const MemberCardComp: FC<MemberCardProps> = (props: MemberCardProps) => {

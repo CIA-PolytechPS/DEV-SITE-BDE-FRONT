@@ -1,26 +1,26 @@
 import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
-import { unknownToArray, unknownToNumber, unknownToString } from "@/shared/utils/common/convert.util";
-import { Event, mapEvent } from "@/shared/models/event.model";
-import { Project, mapProject } from "@/shared/models/project.model";
+import { unknownToNumber, unknownToString } from "@/shared/utils/common/convert.util";
 
 export interface Club {
-    id            : number;
-    name          : string;
-    short_name    : string;
-    image_location: string;
-    description   : string;
-    board_members : string;
-    events        : Event[];
-    projects      : Project[];
+    id         : number;
+    name       : string;
+    short_name : string;
+    place_id   : number;
+    logo       : string;
+    banner     : string;
+    color      : string;
+    alpha      : number;
+    description: string;
 }
 
 export const mapClub = createMapper<Club>({
-    id            : createConverter(unknownToNumber, -1),
-    name          : createConverter(unknownToString, ""),
-    short_name    : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
-    image_location: createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
-    description   : createConverter(unknownToString, ""),
-    board_members : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
-    events        : createConverter(unknownToArray(mapEvent), []),
-    projects      : createConverter(unknownToArray(mapProject), []),
+    id         : createConverter(unknownToNumber, -1),
+    name       : createConverter(unknownToString, ""),
+    short_name : createConverter(unknownToString, ""), // eslint-disable-line @typescript-eslint/naming-convention
+    place_id   : createConverter(unknownToNumber, -1), // eslint-disable-line @typescript-eslint/naming-convention
+    logo       : createConverter(unknownToString, ""),
+    banner     : createConverter(unknownToString, ""),
+    color      : createConverter(unknownToString, ""),
+    alpha      : createConverter(unknownToNumber, 1),
+    description: createConverter(unknownToString, ""),
 });

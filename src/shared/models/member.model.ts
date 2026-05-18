@@ -1,16 +1,14 @@
-import { unknownToString } from "@/shared/utils/common/convert.util";
+import { unknownToNumber } from "@/shared/utils/common/convert.util";
 import { createConverter, createMapper } from "@/shared/utils/common/mapper.util";
 
 export interface Member {
-    nom     : string;
-    photo   : string;
-    fonction: string;
-    email   : string;
+    user_id: number;
+    club_id: number;
+    job_id : number;
 }
 
 export const mapMember = createMapper<Member>({
-    nom     : createConverter(unknownToString, ""),
-    photo   : createConverter(unknownToString, ""),
-    fonction: createConverter(unknownToString, ""),
-    email   : createConverter(unknownToString, ""),
+    user_id: createConverter(unknownToNumber, 0), // eslint-disable-line @typescript-eslint/naming-convention
+    club_id: createConverter(unknownToNumber, 0), // eslint-disable-line @typescript-eslint/naming-convention
+    job_id : createConverter(unknownToNumber, 0), // eslint-disable-line @typescript-eslint/naming-convention
 });

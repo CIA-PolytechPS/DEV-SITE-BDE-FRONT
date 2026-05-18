@@ -9,6 +9,7 @@ export interface User {
     lastname       : string;
     created_on     : Date;
     last_connection: Date;
+    promo          : number;
 }
 
 export const mapUser = createMapper<User>({
@@ -19,6 +20,7 @@ export const mapUser = createMapper<User>({
     lastname       : createConverter(unknownToString, ""),
     created_on     : createConverter(unknownToDate, new Date()),  // eslint-disable-line @typescript-eslint/naming-convention
     last_connection: createConverter(unknownToDate, new Date()),  // eslint-disable-line @typescript-eslint/naming-convention
+    promo          : createConverter(unknownToNumber, -1),
 });
 
 export interface Role {
