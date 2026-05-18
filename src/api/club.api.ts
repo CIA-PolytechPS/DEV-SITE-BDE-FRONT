@@ -26,13 +26,13 @@ const CLUBS: Club[] = [
 ];
 
 export async function getAllClubs(): Promise<Club[]> {
-    await fetch("https://jsonplaceholder.typicode.com");
+    await fetch("http://localhost:3000/logo192.png");
     
     return CLUBS.map(mapClub);
 }
 
 export async function getClubByShortName(short_name: string): Promise<Club | undefined> {
-    await fetch("https://jsonplaceholder.typicode.com");
+    await fetch("http://localhost:3000/logo192.png");
     
     const raw_club = CLUBS.find((c) => { return c.short_name === short_name; });
 
@@ -40,7 +40,7 @@ export async function getClubByShortName(short_name: string): Promise<Club | und
 }
 
 export async function getClubById(id: number): Promise<Club | undefined> {
-    await fetch("https://jsonplaceholder.typicode.com");
+    await fetch("http://localhost:3000/logo192.png");
     
     const raw_club = CLUBS.find((c) => { return c.id === id; });
 

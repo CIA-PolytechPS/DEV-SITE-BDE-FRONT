@@ -34,7 +34,13 @@ const USERS: User[] = [
 ];
 
 export async function getSelf(_token: string): Promise<User> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return mapUser(USERS[0]);
+}
+
+export async function getUserById(_token: string, user_id: number): Promise<User | undefined> {
+    await fetch("http://localhost:3000/logo192.png");
+
+    return USERS.filter((user) => { return user.id === user_id; }).map(mapUser)[0];
 }

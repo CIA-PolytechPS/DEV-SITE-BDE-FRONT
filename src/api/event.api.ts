@@ -109,19 +109,19 @@ const EVENT_CATEGORIES : EventCategory[] = [
 ];
 
 export async function getAllEvents(): Promise<Event[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return EVENTS.map(mapEvent);
 }
 
 export async function getListFutureEvents(): Promise<Event[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return EVENTS.filter((event) => { return event.end_date > new Date(); }).map(mapEvent);
 }
 
 export async function getEventById(id: number): Promise<Event | null> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     const raw_event = EVENTS.find((event) => { return event.id === id; });
 
@@ -129,7 +129,7 @@ export async function getEventById(id: number): Promise<Event | null> {
 }
 
 export async function getAllEventCategories(): Promise<EventCategory[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return EVENT_CATEGORIES.map(mapEventCategory);
 }

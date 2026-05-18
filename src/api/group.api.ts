@@ -19,7 +19,7 @@ const GROUPS: Group[] = [
 ];
 
 export async function getAllGroups(): Promise<Group[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return GROUPS.map(mapGroup);
 }

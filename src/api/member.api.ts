@@ -19,7 +19,13 @@ const MEMBERS: Member[] = [
 ];
 
 export async function getMembers(): Promise<Member[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return MEMBERS.map(mapMember);
+}
+
+export async function getMembersByJob(job_id: number): Promise<Member[]> {
+    await fetch("http://localhost:3000/logo192.png");
+    
+    return MEMBERS.filter((member) => { return member.job_id === job_id; }).map(mapMember);
 }

@@ -19,13 +19,13 @@ const PLACES: Place[] = [
 ];
 
 export async function getAllPlaces(): Promise<Place[]> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     return PLACES.map(mapPlace);
 }
 
 export async function getPlaceById(id: number): Promise<Place | null> {
-    await fetch("https://data.bde-pps.fr/bde/images/logo/bde.svg");
+    await fetch("http://localhost:3000/logo192.png");
 
     const raw_place = PLACES.find((place) => { return place.id === id; });
 
